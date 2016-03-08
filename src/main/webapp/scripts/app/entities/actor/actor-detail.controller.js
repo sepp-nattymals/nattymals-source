@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('nattymalsApp')
-    .controller('ActorDetailController', function ($scope, $rootScope, $stateParams, entity, Actor, Payment) {
+    .controller('ActorDetailController', function ($scope, $rootScope, $stateParams, entity, Actor, Payment, User) {
         $scope.actor = entity;
         $scope.load = function (id) {
             Actor.get({id: id}, function(result) {

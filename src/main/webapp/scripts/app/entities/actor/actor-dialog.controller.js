@@ -1,11 +1,12 @@
 'use strict';
 
 angular.module('nattymalsApp').controller('ActorDialogController',
-    ['$scope', '$stateParams', '$uibModalInstance', 'entity', 'Actor', 'Payment',
-        function($scope, $stateParams, $uibModalInstance, entity, Actor, Payment) {
+    ['$scope', '$stateParams', '$uibModalInstance', '$q', 'entity', 'Actor', 'Payment', 'User',
+        function($scope, $stateParams, $uibModalInstance, $q, entity, Actor, Payment, User) {
 
         $scope.actor = entity;
         $scope.payments = Payment.query();
+        $scope.users = User.query();
         $scope.load = function(id) {
             Actor.get({id : id}, function(result) {
                 $scope.actor = result;

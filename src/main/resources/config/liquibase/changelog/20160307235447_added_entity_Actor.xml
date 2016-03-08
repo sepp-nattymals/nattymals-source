@@ -29,8 +29,17 @@
                 <constraints nullable="false" />
             </column>
             
+            <column name="user_id" type="bigint">
+                <constraints unique="true"/>
+            </column>
             <!-- jhipster-needle-liquibase-add-column - Jhipster will add columns here, do not remove-->
         </createTable>
         
+        <addForeignKeyConstraint baseColumnNames="user_id"
+                                 baseTableName="actor"
+                                 constraintName="fk_actor_user_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+
     </changeSet>
 </databaseChangeLog>

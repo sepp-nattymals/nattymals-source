@@ -18,7 +18,8 @@
             },
             "address": "Address",
             "phone": "Phone",
-            "payment": "Payment"
+            "payment": "Payment",
+            "user": "User"
         }
     }
 }

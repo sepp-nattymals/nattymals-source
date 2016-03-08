@@ -1,49 +1,44 @@
 package com.sepp.nattymals.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import javax.persistence.*;
-import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.Objects;
+
+import javax.persistence.Column;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * A Actor.
  */
-@Entity
-@Table(name = "actor")
-public class Actor implements Serializable {
+@MappedSuperclass
+public abstract class Actor implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+	private static final long serialVersionUID = 1L;
 
-    @NotNull
+	@NotNull
     @Column(name = "address", nullable = false)
     private String address;
-
+    
     @NotNull
     @Column(name = "phone", nullable = false)
     private String phone;
-
+    
     @OneToMany(mappedBy = "actor")
     @JsonIgnore
     private Set<Payment> payments = new HashSet<>();
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+    @OneToOne(optional=false)
+    private User user;
 
     public String getAddress() {
         return address;
     }
-
+    
     public void setAddress(String address) {
         this.address = address;
     }
@@ -51,7 +46,7 @@ public class Actor implements Serializable {
     public String getPhone() {
         return phone;
     }
-
+    
     public void setPhone(String phone) {
         this.phone = phone;
     }
@@ -64,31 +59,19 @@ public class Actor implements Serializable {
         this.payments = payments;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Actor actor = (Actor) o;
-        if(actor.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, actor.id);
+    public User getUser() {
+        return user;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
+    public void setUser(User user) {
+        this.user = user;
     }
 
+ 
     @Override
     public String toString() {
         return "Actor{" +
-            "id=" + id +
-            ", address='" + address + "'" +
+            "address='" + address + "'" +
             ", phone='" + phone + "'" +
             '}';
     }

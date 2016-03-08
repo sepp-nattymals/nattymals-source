@@ -21,6 +21,7 @@
                     <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="address"><span translate="nattymalsApp.actor.address">Address</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="phone"><span translate="nattymalsApp.actor.phone">Phone</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="user.login"><span translate="nattymalsApp.actor.user">user</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -29,6 +30,9 @@
                     <td><a ui-sref="actor.detail({id:actor.id})">{{actor.id}}</a></td>
                     <td>{{actor.address}}</td>
                     <td>{{actor.phone}}</td>
+                    <td>
+                        {{actor.user.login}}
+                    </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"
