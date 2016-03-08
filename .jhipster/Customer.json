@@ -1,0 +1,23 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "premiumSubscription",
+            "otherEntityName": "premiumSubscription",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "customer"
+        },
+        {
+            "relationshipId": 2,
+            "relationshipName": "folder",
+            "otherEntityName": "folder",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "customer"
+        }
+    ],
+    "fields": [],
+    "changelogDate": "20160308234824",
+    "dto": "no",
+    "service": "serviceClass",
+    "pagination": "pagination"
+}
