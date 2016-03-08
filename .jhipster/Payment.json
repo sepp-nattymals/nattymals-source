@@ -1,0 +1,51 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "actor",
+            "otherEntityName": "actor",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "login"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "concept",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "amount",
+            "fieldType": "Double",
+            "fieldValidateRules": [
+                "required",
+                "min"
+            ],
+            "fieldValidateRulesMin": 0
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "paymentDate",
+            "fieldType": "ZonedDateTime",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "comment",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20160307235654",
+    "dto": "no",
+    "service": "serviceClass",
+    "pagination": "pagination"
+}

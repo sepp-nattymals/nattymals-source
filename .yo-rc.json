@@ -1,0 +1,24 @@
+{
+  "generator-jhipster": {
+    "baseName": "nattymals",
+    "packageName": "com.sepp.nattymals",
+    "packageFolder": "com/sepp/nattymals",
+    "authenticationType": "session",
+    "hibernateCache": "no",
+    "clusteredHttpSession": "no",
+    "websocket": "no",
+    "databaseType": "sql",
+    "devDatabaseType": "h2Memory",
+    "prodDatabaseType": "mysql",
+    "searchEngine": "no",
+    "useSass": false,
+    "buildTool": "maven",
+    "frontendBuilder": "gulp",
+    "enableTranslation": true,
+    "enableSocialSignIn": true,
+    "rememberMeKey": "83b9cb49f7853e003c493240f15972d369ddd4fa",
+    "testFrameworks": [
+      "gatling"
+    ]
+  }
+}

@@ -1,0 +1,69 @@
+<div>
+    <h2 translate="nattymalsApp.payment.home.title">Payments</h2>
+    <jh-alert></jh-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="payment.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span 
+                        translate="nattymalsApp.payment.home.createLabel">Create new Payment
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
+                    <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="concept"><span translate="nattymalsApp.payment.concept">Concept</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="amount"><span translate="nattymalsApp.payment.amount">Amount</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="paymentDate"><span translate="nattymalsApp.payment.paymentDate">PaymentDate</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="comment"><span translate="nattymalsApp.payment.comment">Comment</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="actor.login"><span translate="nattymalsApp.payment.actor">actor</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="payment in payments track by payment.id">
+                    <td><a ui-sref="payment.detail({id:payment.id})">{{payment.id}}</a></td>
+                    <td>{{payment.concept}}</td>
+                    <td>{{payment.amount}}</td>
+                    <td>{{payment.paymentDate | date:'medium'}}</td>
+                    <td>{{payment.comment}}</td>
+                    <td>
+                        <a ui-sref="actor.detail({id:payment.actor.id})">{{payment.actor.login}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="payment.detail({id:payment.id})"
+                                    class="btn btn-info btn-sm"> 
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="payment.edit({id:payment.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="payment.delete({id:payment.id})"
+                                    class="btn btn-danger btn-sm">                                    
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <uib-pagination class="pagination-sm" total-items="totalItems" ng-model="page" ng-change="loadAll()"></uib-pagination>
+    </div>
+</div>

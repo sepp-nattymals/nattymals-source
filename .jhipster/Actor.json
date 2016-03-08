@@ -1,0 +1,33 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "payment",
+            "otherEntityName": "payment",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "actor"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "address",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "phone",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20160307235447",
+    "dto": "no",
+    "service": "serviceClass",
+    "pagination": "pagination"
+}

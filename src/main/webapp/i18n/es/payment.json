@@ -1,0 +1,26 @@
+{
+    "nattymalsApp": {
+        "payment" : {
+            "home": {
+                "title": "Payments",
+                "createLabel": "Crear nuevo Payment",
+                "createOrEditLabel": "Crear o editar Payment",
+                "search": "Search for Payment"
+            },
+            "created": "Un nuevo Payment ha sido creado con el identificador {{ param }}",
+            "updated": "Un Payment ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Payment ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Payment {{ id }}?"
+            },
+            "detail": {
+                "title": "Payment"
+            },
+            "concept": "Concept",
+            "amount": "Amount",
+            "paymentDate": "PaymentDate",
+            "comment": "Comment",
+            "actor": "Actor"
+        }
+    }
+}

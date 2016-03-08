@@ -1,0 +1,25 @@
+{
+    "nattymalsApp": {
+        "actor" : {
+            "home": {
+                "title": "Actors",
+                "createLabel": "Créer un nouveau Actor",
+                "createOrEditLabel": "Créer ou éditer un Actor",
+                "search": "Search for Actor"
+            },
+            "created": "Un nouveau Actor a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Actor avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Actor avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Actor {{ id }} ?"
+            },
+            "detail": {
+                "title": "Actor"
+            },
+            "address": "Address",
+            "phone": "Phone",
+            "payment": "Payment"
+        }
+    }
+}
+
