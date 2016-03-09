@@ -17,6 +17,7 @@
                 "medals": "Medals",
                 "premiumSubscription": "PremiumSubscription",
                 "folder": "Folder",
+                "message": "Message",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
