@@ -1,0 +1,27 @@
+{
+    "nattymalsApp": {
+        "veterinarian" : {
+            "home": {
+                "title": "Veterinarians",
+                "createLabel": "Crear nuevo Veterinarian",
+                "createOrEditLabel": "Crear o editar Veterinarian",
+                "search": "Search for Veterinarian"
+            },
+            "created": "Un nuevo Veterinarian ha sido creado con el identificador {{ param }}",
+            "updated": "Un Veterinarian ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Veterinarian ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Veterinarian {{ id }}?"
+            },
+            "detail": {
+                "title": "Veterinarian"
+            },
+            "bankAccount": "BankAccount",
+            "webAddress": "WebAddress",
+            "refereeNumber": "RefereeNumber",
+            "clinic": "Clinic",
+            "veterinarianRating": "VeterinarianRating",
+            "veterinarianComment": "VeterinarianComment"
+        }
+    }
+}
