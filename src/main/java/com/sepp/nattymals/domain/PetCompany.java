@@ -1,23 +1,30 @@
 package com.sepp.nattymals.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
 
-import javax.persistence.*;
-import javax.validation.constraints.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.SafeHtml;
 import org.hibernate.validator.constraints.SafeHtml.WhiteListType;
 
-import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * A PetCompany.
  */
 @Entity
-@Table(name = "pet_company")
+@Table(name = "pet_company", uniqueConstraints=@UniqueConstraint(columnNames="nif"))
 public class PetCompany extends Actor implements Serializable {
 
     @Id
@@ -31,7 +38,7 @@ public class PetCompany extends Actor implements Serializable {
     
     @NotNull
     @SafeHtml(whitelistType=WhiteListType.NONE)
-    @Column(name = "nif", nullable = false)
+    @Column(name = "nif", nullable = false, unique=true)
     private String nif;
     
     @OneToMany(mappedBy = "petCompany")
