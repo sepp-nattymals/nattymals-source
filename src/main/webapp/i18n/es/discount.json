@@ -1,0 +1,29 @@
+{
+    "nattymalsApp": {
+        "discount" : {
+            "home": {
+                "title": "Discounts",
+                "createLabel": "Crear nuevo Discount",
+                "createOrEditLabel": "Crear o editar Discount",
+                "search": "Search for Discount"
+            },
+            "created": "Un nuevo Discount ha sido creado con el identificador {{ param }}",
+            "updated": "Un Discount ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Discount ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Discount {{ id }}?"
+            },
+            "detail": {
+                "title": "Discount"
+            },
+            "companyName": "CompanyName",
+            "title": "Title",
+            "description": "Description",
+            "code": "Code",
+            "discountRate": "DiscountRate",
+            "startDate": "StartDate",
+            "endDate": "EndDate",
+            "administrator": "Administrator"
+        }
+    }
+}

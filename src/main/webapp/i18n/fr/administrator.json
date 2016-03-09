@@ -1,0 +1,24 @@
+{
+    "nattymalsApp": {
+        "administrator" : {
+            "home": {
+                "title": "Administrators",
+                "createLabel": "Créer un nouveau Administrator",
+                "createOrEditLabel": "Créer ou éditer un Administrator",
+                "search": "Search for Administrator"
+            },
+            "created": "Un nouveau Administrator a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Administrator avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Administrator avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Administrator {{ id }} ?"
+            },
+            "detail": {
+                "title": "Administrator"
+            },
+            "discount": "Discount",
+            "announcement": "Announcement"
+        }
+    }
+}
+

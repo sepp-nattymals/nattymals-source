@@ -1,0 +1,73 @@
+<div>
+    <h2 translate="nattymalsApp.announcement.home.title">Announcements</h2>
+    <jh-alert></jh-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="announcement.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span 
+                        translate="nattymalsApp.announcement.home.createLabel">Create new Announcement
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
+                    <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="title"><span translate="nattymalsApp.announcement.title">Title</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="companyName"><span translate="nattymalsApp.announcement.companyName">CompanyName</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="startDate"><span translate="nattymalsApp.announcement.startDate">StartDate</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="endDate"><span translate="nattymalsApp.announcement.endDate">EndDate</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="photo"><span translate="nattymalsApp.announcement.photo">Photo</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="administrator.id"><span translate="nattymalsApp.announcement.administrator">administrator</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="announcement in announcements track by announcement.id">
+                    <td><a ui-sref="announcement.detail({id:announcement.id})">{{announcement.id}}</a></td>
+                    <td>{{announcement.title}}</td>
+                    <td>{{announcement.companyName}}</td>
+                    <td>{{announcement.startDate | date:'medium'}}</td>
+                    <td>{{announcement.endDate | date:'medium'}}</td>
+                    <td>
+                        <img data-ng-src="{{'data:' + announcement.photoContentType + ';base64,' + announcement.photo}}" style="max-height: 30px;" ng-if="announcement.photo"/> {{announcement.photoContentType}} {{byteSize(announcement.photo)}}
+                    </td>
+                    <td>
+                        <a ui-sref="administrator.detail({id:announcement.administrator.id})">{{announcement.administrator.id}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="announcement.detail({id:announcement.id})"
+                                    class="btn btn-info btn-sm"> 
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="announcement.edit({id:announcement.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="announcement.delete({id:announcement.id})"
+                                    class="btn btn-danger btn-sm">                                    
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <uib-pagination class="pagination-sm" total-items="totalItems" ng-model="page" ng-change="loadAll()"></uib-pagination>
+    </div>
+</div>

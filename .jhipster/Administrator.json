@@ -1,0 +1,23 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "discount",
+            "otherEntityName": "discount",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "administrator"
+        },
+        {
+            "relationshipId": 2,
+            "relationshipName": "announcement",
+            "otherEntityName": "announcement",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "administrator"
+        }
+    ],
+    "fields": [],
+    "changelogDate": "20160309143844",
+    "dto": "no",
+    "service": "serviceClass",
+    "pagination": "pagination"
+}

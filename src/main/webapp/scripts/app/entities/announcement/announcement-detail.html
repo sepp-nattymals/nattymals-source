@@ -1,0 +1,71 @@
+
+<div>
+    <h2><span translate="nattymalsApp.announcement.detail.title">Announcement</span> {{announcement.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="nattymalsApp.announcement.title">Title</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{announcement.title}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="nattymalsApp.announcement.companyName">CompanyName</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{announcement.companyName}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="nattymalsApp.announcement.startDate">StartDate</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{announcement.startDate | date:'medium'}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="nattymalsApp.announcement.endDate">EndDate</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{announcement.endDate | date:'medium'}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="nattymalsApp.announcement.photo">Photo</span>
+                </td>
+                <td>
+                    <img data-ng-src="{{'data:' + announcement.photoContentType + ';base64,' + announcement.photo}}" style="max-width: 100%;" ng-if="announcement.photo"/>
+                    <div>{{announcement.photoContentType}}  {{byteSize(announcement.photo)}}</div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="nattymalsApp.announcement.administrator">administrator</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="administrator.detail({id:announcement.administrator.id})">{{announcement.administrator.id}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

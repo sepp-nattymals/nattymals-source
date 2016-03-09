@@ -1,0 +1,75 @@
+<div>
+    <h2 translate="nattymalsApp.contract.home.title">Contracts</h2>
+    <jh-alert></jh-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="contract.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span 
+                        translate="nattymalsApp.contract.home.createLabel">Create new Contract
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
+                    <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="title"><span translate="nattymalsApp.contract.title">Title</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="fee"><span translate="nattymalsApp.contract.fee">Fee</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="referenceCode"><span translate="nattymalsApp.contract.referenceCode">ReferenceCode</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="creationDate"><span translate="nattymalsApp.contract.creationDate">CreationDate</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="terminationDate"><span translate="nattymalsApp.contract.terminationDate">TerminationDate</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="terms"><span translate="nattymalsApp.contract.terms">Terms</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="registered"><span translate="nattymalsApp.contract.registered">Registered</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="petCompany.id"><span translate="nattymalsApp.contract.petCompany">petCompany</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="contract in contracts track by contract.id">
+                    <td><a ui-sref="contract.detail({id:contract.id})">{{contract.id}}</a></td>
+                    <td>{{contract.title}}</td>
+                    <td>{{contract.fee}}</td>
+                    <td>{{contract.referenceCode}}</td>
+                    <td>{{contract.creationDate | date:'medium'}}</td>
+                    <td>{{contract.terminationDate | date:'medium'}}</td>
+                    <td>{{contract.terms}}</td>
+                    <td>{{contract.registered}}</td>
+                    <td>
+                        <a ui-sref="petCompany.detail({id:contract.petCompany.id})">{{contract.petCompany.id}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="contract.detail({id:contract.id})"
+                                    class="btn btn-info btn-sm"> 
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="contract.edit({id:contract.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="contract.delete({id:contract.id})"
+                                    class="btn btn-danger btn-sm">                                    
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <uib-pagination class="pagination-sm" total-items="totalItems" ng-model="page" ng-change="loadAll()"></uib-pagination>
+    </div>
+</div>

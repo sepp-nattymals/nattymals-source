@@ -1,0 +1,86 @@
+
+<div>
+    <h2><span translate="nattymalsApp.discount.detail.title">Discount</span> {{discount.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="nattymalsApp.discount.companyName">CompanyName</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{discount.companyName}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="nattymalsApp.discount.title">Title</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{discount.title}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="nattymalsApp.discount.description">Description</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{discount.description}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="nattymalsApp.discount.code">Code</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{discount.code}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="nattymalsApp.discount.discountRate">DiscountRate</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{discount.discountRate}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="nattymalsApp.discount.startDate">StartDate</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{discount.startDate | date:'medium'}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="nattymalsApp.discount.endDate">EndDate</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{discount.endDate | date:'medium'}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="nattymalsApp.discount.administrator">administrator</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="administrator.detail({id:discount.administrator.id})">{{discount.administrator.id}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

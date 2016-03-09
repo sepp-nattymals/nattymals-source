@@ -1,0 +1,24 @@
+{
+    "nattymalsApp": {
+        "petCompany" : {
+            "home": {
+                "title": "PetCompanys",
+                "createLabel": "Create a new PetCompany",
+                "createOrEditLabel": "Create or edit a PetCompany",
+                "search": "Search for PetCompany"
+            },
+            "created": "A new PetCompany is created with identifier {{ param }}",
+            "updated": "A PetCompany is updated with identifier {{ param }}",
+            "deleted": "A PetCompany is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete PetCompany {{ id }}?"
+            },
+            "detail": {
+                "title": "PetCompany"
+            },
+            "bankAccount": "BankAccount",
+            "nif": "Nif",
+            "contract": "Contract"
+        }
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "nattymalsApp": {
+        "contract" : {
+            "home": {
+                "title": "Contracts",
+                "createLabel": "Crear nuevo Contract",
+                "createOrEditLabel": "Crear o editar Contract",
+                "search": "Search for Contract"
+            },
+            "created": "Un nuevo Contract ha sido creado con el identificador {{ param }}",
+            "updated": "Un Contract ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Contract ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Contract {{ id }}?"
+            },
+            "detail": {
+                "title": "Contract"
+            },
+            "title": "Title",
+            "fee": "Fee",
+            "referenceCode": "ReferenceCode",
+            "creationDate": "CreationDate",
+            "terminationDate": "TerminationDate",
+            "terms": "Terms",
+            "registered": "Registered",
+            "petCompany": "PetCompany"
+        }
+    }
+}
