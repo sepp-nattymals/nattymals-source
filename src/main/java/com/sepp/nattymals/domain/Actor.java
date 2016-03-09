@@ -8,7 +8,11 @@ import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.SafeHtml;
+import org.hibernate.validator.constraints.SafeHtml.WhiteListType;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -21,10 +25,12 @@ public abstract class Actor implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@NotNull
+	@SafeHtml(whitelistType=WhiteListType.NONE)
     @Column(name = "address", nullable = false)
     private String address;
     
     @NotNull
+    @SafeHtml(whitelistType=WhiteListType.NONE)
     @Column(name = "phone", nullable = false)
     private String phone;
     
@@ -32,6 +38,8 @@ public abstract class Actor implements Serializable {
     @JsonIgnore
     private Set<Payment> payments = new HashSet<>();
 
+    @NotNull
+    @Valid
     @OneToOne(optional=false)
     private User user;
 

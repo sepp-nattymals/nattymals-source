@@ -1,13 +1,25 @@
 package com.sepp.nattymals.domain;
 
-import java.time.ZonedDateTime;
-
-import javax.persistence.*;
-import javax.validation.constraints.*;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.time.ZonedDateTime;
 import java.util.Objects;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.validation.Valid;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+
+import org.hibernate.validator.constraints.SafeHtml;
+import org.hibernate.validator.constraints.SafeHtml.WhiteListType;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * A Contract.
@@ -21,6 +33,7 @@ public class Contract implements Serializable {
     private Long id;
 
     @NotNull
+    @SafeHtml(whitelistType=WhiteListType.NONE)
     @Column(name = "title", nullable = false)
     private String title;
     
@@ -30,17 +43,22 @@ public class Contract implements Serializable {
     private Double fee;
     
     @NotNull
+    @SafeHtml(whitelistType=WhiteListType.NONE)
     @Column(name = "reference_code", nullable = false)
     private String referenceCode;
     
     @NotNull
+    @DateTimeFormat(pattern="dd/MM/yyyy HH:MM")
+    @Past
     @Column(name = "creation_date", nullable = false)
     private ZonedDateTime creationDate;
     
     @NotNull
+    @DateTimeFormat(pattern="dd/MM/yyyy HH:MM")
     @Column(name = "termination_date", nullable = false)
     private ZonedDateTime terminationDate;
     
+    @SafeHtml(whitelistType=WhiteListType.NONE)
     @Column(name = "terms")
     private String terms;
     
@@ -48,6 +66,8 @@ public class Contract implements Serializable {
     @Column(name = "registered", nullable = false)
     private Boolean registered;
     
+    @NotNull
+    @Valid
     @ManyToOne
     @JoinColumn(name = "pet_company_id")
     private PetCompany petCompany;

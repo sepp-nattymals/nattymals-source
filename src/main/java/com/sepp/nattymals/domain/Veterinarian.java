@@ -1,12 +1,24 @@
 package com.sepp.nattymals.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
+import java.util.Set;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.SafeHtml;
+import org.hibernate.validator.constraints.SafeHtml.WhiteListType;
+import org.hibernate.validator.constraints.URL;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * A Veterinarian.
@@ -19,13 +31,20 @@ public class Veterinarian extends Customer implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "bank_account")
+    @NotNull
+    @SafeHtml(whitelistType=WhiteListType.NONE)
+    @Column(name = "bank_account", nullable=false)
     private String bankAccount;
     
-    @Column(name = "web_address")
+    @NotNull
+    @URL
+    @SafeHtml(whitelistType=WhiteListType.NONE)
+    @Column(name = "web_address", nullable=false)
     private String webAddress;
     
-    @Column(name = "referee_number")
+    @NotNull
+    @SafeHtml(whitelistType=WhiteListType.NONE)
+    @Column(name = "referee_number", nullable=false)
     private String refereeNumber;
     
     @OneToMany(mappedBy = "veterinarian")

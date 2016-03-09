@@ -4,6 +4,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
+
+import org.hibernate.validator.constraints.SafeHtml;
+import org.hibernate.validator.constraints.SafeHtml.WhiteListType;
+
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -21,10 +25,12 @@ public class PetCompany extends Actor implements Serializable {
     private Long id;
 
     @NotNull
+    @SafeHtml(whitelistType=WhiteListType.NONE)
     @Column(name = "bank_account", nullable = false)
     private String bankAccount;
     
     @NotNull
+    @SafeHtml(whitelistType=WhiteListType.NONE)
     @Column(name = "nif", nullable = false)
     private String nif;
     

@@ -1,12 +1,22 @@
 package com.sepp.nattymals.domain;
 
-import java.time.ZonedDateTime;
-
-import javax.persistence.*;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.time.ZonedDateTime;
 import java.util.Objects;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.validation.Valid;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * A PremiumSubscription.
@@ -19,15 +29,23 @@ public class PremiumSubscription implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "start_date")
+    @NotNull
+    @DateTimeFormat(pattern="dd/MM/yyyy HH:MM")
+    @Column(name = "start_date", nullable=false)
     private ZonedDateTime startDate;
     
-    @Column(name = "end_date")
+    @NotNull
+    @DateTimeFormat(pattern="dd/MM/yyyy HH:MM")
+    @Column(name = "end_date", nullable=false)
     private ZonedDateTime endDate;
     
-    @Column(name = "fee")
+    @NotNull
+    @Min(0)
+    @Column(name = "fee", nullable=false)
     private Double fee;
     
+    @NotNull
+    @Valid
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private Customer customer;

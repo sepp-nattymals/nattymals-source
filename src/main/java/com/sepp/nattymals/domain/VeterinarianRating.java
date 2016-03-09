@@ -1,11 +1,21 @@
 package com.sepp.nattymals.domain;
 
 
-import javax.persistence.*;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.validation.Valid;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 /**
  * A VeterinarianRating.
@@ -18,13 +28,20 @@ public class VeterinarianRating implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "rating")
+    @NotNull
+    @Min(1)
+    @Max(5)
+    @Column(name = "rating", nullable=false)
     private Integer rating;
     
+    @NotNull
+    @Valid
     @ManyToOne
     @JoinColumn(name = "veterinarian_id")
     private Veterinarian veterinarian;
 
+    @NotNull
+    @Valid
     @ManyToOne
     @JoinColumn(name = "pet_owner_id")
     private PetOwner petOwner;

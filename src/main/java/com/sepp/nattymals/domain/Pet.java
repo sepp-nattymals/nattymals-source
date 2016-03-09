@@ -1,14 +1,31 @@
 package com.sepp.nattymals.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import java.time.LocalDate;
-
-import javax.persistence.*;
-import javax.validation.constraints.*;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
+import java.util.Set;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.validation.Valid;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+
+import org.hibernate.validator.constraints.SafeHtml;
+import org.hibernate.validator.constraints.SafeHtml.WhiteListType;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * A Pet.
@@ -22,10 +39,12 @@ public class Pet implements Serializable {
     private Long id;
 
     @NotNull
+    @SafeHtml(whitelistType=WhiteListType.NONE)
     @Column(name = "type", nullable = false)
     private String type;
     
     @NotNull
+    @SafeHtml(whitelistType=WhiteListType.NONE)
     @Column(name = "sex", nullable = false)
     private String sex;
     
@@ -39,10 +58,13 @@ public class Pet implements Serializable {
     private Boolean hasPedigree;
     
     @NotNull
+    @SafeHtml(whitelistType=WhiteListType.NONE)
     @Column(name = "race", nullable = false)
     private String race;
     
     @NotNull
+    @Past
+    @DateTimeFormat(pattern="dd/MM/yyyy")
     @Column(name = "birth_date", nullable = false)
     private LocalDate birthDate;
     
@@ -50,15 +72,20 @@ public class Pet implements Serializable {
     @Column(name = "photo")
     private byte[] photo;
     
-    @Column(name = "photo_content_type")        private String photoContentType;
+    @Column(name = "photo_content_type")        
+    private String photoContentType;
+    
     @NotNull
     @Column(name = "dating", nullable = false)
     private Boolean dating;
     
     @NotNull
+    @SafeHtml(whitelistType=WhiteListType.NONE)
     @Column(name = "name", nullable = false)
     private String name;
     
+    @NotNull
+    @Valid
     @ManyToOne
     @JoinColumn(name = "pet_owner_id")
     private PetOwner petOwner;

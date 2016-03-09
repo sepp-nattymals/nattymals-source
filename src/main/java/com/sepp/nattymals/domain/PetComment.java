@@ -1,13 +1,24 @@
 package com.sepp.nattymals.domain;
 
-import java.time.ZonedDateTime;
-
-import javax.persistence.*;
-import javax.validation.constraints.*;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.time.ZonedDateTime;
 import java.util.Objects;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+
+import org.hibernate.validator.constraints.SafeHtml;
+import org.hibernate.validator.constraints.SafeHtml.WhiteListType;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * A PetComment.
@@ -21,17 +32,24 @@ public class PetComment implements Serializable {
     private Long id;
 
     @NotNull
+    @Past
+    @DateTimeFormat(pattern="dd/MM/yyyy HH:MM")
     @Column(name = "creation_date", nullable = false)
     private ZonedDateTime creationDate;
     
     @NotNull
+    @SafeHtml(whitelistType=WhiteListType.NONE)
     @Column(name = "text", nullable = false)
     private String text;
     
+    @NotNull
+    @Valid
     @ManyToOne
     @JoinColumn(name = "pet_owner_id")
     private PetOwner petOwner;
 
+    @NotNull
+    @Valid
     @ManyToOne
     @JoinColumn(name = "pet_id")
     private Pet pet;

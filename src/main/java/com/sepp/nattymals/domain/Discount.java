@@ -1,13 +1,24 @@
 package com.sepp.nattymals.domain;
 
-import java.time.ZonedDateTime;
-
-import javax.persistence.*;
-import javax.validation.constraints.*;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.time.ZonedDateTime;
 import java.util.Objects;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.validation.Valid;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.SafeHtml;
+import org.hibernate.validator.constraints.SafeHtml.WhiteListType;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * A Discount.
@@ -21,17 +32,21 @@ public class Discount implements Serializable {
     private Long id;
 
     @NotNull
+    @SafeHtml(whitelistType=WhiteListType.NONE)
     @Column(name = "company_name", nullable = false)
     private String companyName;
     
     @NotNull
+    @SafeHtml(whitelistType=WhiteListType.NONE)
     @Column(name = "title", nullable = false)
     private String title;
     
+    @SafeHtml(whitelistType=WhiteListType.NONE)
     @Column(name = "description")
     private String description;
     
     @NotNull
+    @SafeHtml(whitelistType=WhiteListType.NONE)
     @Column(name = "code", nullable = false)
     private String code;
     
@@ -41,13 +56,17 @@ public class Discount implements Serializable {
     private Integer discountRate;
     
     @NotNull
+    @DateTimeFormat(pattern="dd/MM/yyyy HH:MM")
     @Column(name = "start_date", nullable = false)
     private ZonedDateTime startDate;
     
     @NotNull
+    @DateTimeFormat(pattern="dd/MM/yyyy HH:MM")
     @Column(name = "end_date", nullable = false)
     private ZonedDateTime endDate;
     
+    @NotNull
+    @Valid
     @ManyToOne
     @JoinColumn(name = "administrator_id")
     private Administrator administrator;

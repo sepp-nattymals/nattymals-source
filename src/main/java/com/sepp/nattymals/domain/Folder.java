@@ -1,12 +1,27 @@
 package com.sepp.nattymals.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
+import java.util.Set;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.SafeHtml;
+import org.hibernate.validator.constraints.SafeHtml.WhiteListType;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * A Folder.
@@ -19,9 +34,14 @@ public class Folder implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "name")
+    @NotNull
+    @SafeHtml(whitelistType=WhiteListType.NONE)
+    @Pattern(regexp="^inbox|^outbox|^trashbox$")
+    @Column(name = "name", nullable=false)
     private String name;
     
+    @NotNull
+    @Valid
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private Customer customer;

@@ -1,11 +1,22 @@
 package com.sepp.nattymals.domain;
 
 
-import javax.persistence.*;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.SafeHtml;
+import org.hibernate.validator.constraints.SafeHtml.WhiteListType;
 
 /**
  * A Clinic.
@@ -18,21 +29,33 @@ public class Clinic implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "address")
+    @NotNull
+    @SafeHtml(whitelistType=WhiteListType.NONE)
+    @Column(name = "address", nullable=false)
     private String address;
     
-    @Column(name = "city")
+    @NotNull
+    @SafeHtml(whitelistType=WhiteListType.NONE)
+    @Column(name = "city", nullable=false)
     private String city;
     
-    @Column(name = "province")
+    @NotNull
+    @SafeHtml(whitelistType=WhiteListType.NONE)
+    @Column(name = "province", nullable=false)
     private String province;
     
-    @Column(name = "schedule")
+    @NotNull
+    @SafeHtml(whitelistType=WhiteListType.NONE)
+    @Column(name = "schedule", nullable=false)
     private String schedule;
     
-    @Column(name = "phone_number")
+    @NotNull
+    @SafeHtml(whitelistType=WhiteListType.NONE)
+    @Column(name = "phone_number", nullable=false)
     private String phoneNumber;
     
+    @NotNull
+    @Valid
     @ManyToOne
     @JoinColumn(name = "veterinarian_id")
     private Veterinarian veterinarian;
