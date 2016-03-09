@@ -13,7 +13,7 @@ import java.util.Objects;
  */
 @Entity
 @Table(name = "veterinarian")
-public class Veterinarian implements Serializable {
+public class Veterinarian extends Customer implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

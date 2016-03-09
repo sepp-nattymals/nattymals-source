@@ -1,0 +1,62 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myClinicLabel" translate="nattymalsApp.clinic.home.createOrEditLabel">Create or edit a Clinic</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id" translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="clinic.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="nattymalsApp.clinic.address" for="field_address">Address</label>
+            <input type="text" class="form-control" name="address" id="field_address"
+                    ng-model="clinic.address"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="nattymalsApp.clinic.city" for="field_city">City</label>
+            <input type="text" class="form-control" name="city" id="field_city"
+                    ng-model="clinic.city"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="nattymalsApp.clinic.province" for="field_province">Province</label>
+            <input type="text" class="form-control" name="province" id="field_province"
+                    ng-model="clinic.province"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="nattymalsApp.clinic.schedule" for="field_schedule">Schedule</label>
+            <input type="text" class="form-control" name="schedule" id="field_schedule"
+                    ng-model="clinic.schedule"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="nattymalsApp.clinic.phoneNumber" for="field_phoneNumber">PhoneNumber</label>
+            <input type="text" class="form-control" name="phoneNumber" id="field_phoneNumber"
+                    ng-model="clinic.phoneNumber"
+                     />
+        </div>
+
+        <div class="form-group">
+            <label translate="nattymalsApp.clinic.veterinarian" for="field_veterinarian">veterinarian</label>
+            <select class="form-control" id="field_veterinarian" name="veterinarian" ng-model="clinic.veterinarian" ng-options="veterinarian as veterinarian.id for veterinarian in veterinarians track by veterinarian.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

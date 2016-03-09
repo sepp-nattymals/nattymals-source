@@ -1,0 +1,27 @@
+{
+    "nattymalsApp": {
+        "clinic" : {
+            "home": {
+                "title": "Clinics",
+                "createLabel": "Create a new Clinic",
+                "createOrEditLabel": "Create or edit a Clinic",
+                "search": "Search for Clinic"
+            },
+            "created": "A new Clinic is created with identifier {{ param }}",
+            "updated": "A Clinic is updated with identifier {{ param }}",
+            "deleted": "A Clinic is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Clinic {{ id }}?"
+            },
+            "detail": {
+                "title": "Clinic"
+            },
+            "address": "Address",
+            "city": "City",
+            "province": "Province",
+            "schedule": "Schedule",
+            "phoneNumber": "PhoneNumber",
+            "veterinarian": "Veterinarian"
+        }
+    }
+}
