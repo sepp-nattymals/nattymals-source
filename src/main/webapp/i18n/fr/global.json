@@ -15,6 +15,7 @@
                 "pet": "Pet",
                 "petComment": "PetComment",
                 "medals": "Medals",
+                "premiumSubscription": "PremiumSubscription",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
