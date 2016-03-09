@@ -1,0 +1,73 @@
+<div>
+    <h2 translate="nattymalsApp.medals.home.title">Medalss</h2>
+    <jh-alert></jh-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="medals.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span 
+                        translate="nattymalsApp.medals.home.createLabel">Create new Medals
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
+                    <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="name"><span translate="nattymalsApp.medals.name">Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="code"><span translate="nattymalsApp.medals.code">Code</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="description"><span translate="nattymalsApp.medals.description">Description</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="points"><span translate="nattymalsApp.medals.points">Points</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="icon"><span translate="nattymalsApp.medals.icon">Icon</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="petOwner.user.login"><span translate="nattymalsApp.medals.petOwner">petOwner</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="medals in medalss track by medals.id">
+                    <td><a ui-sref="medals.detail({id:medals.id})">{{medals.id}}</a></td>
+                    <td>{{medals.name}}</td>
+                    <td>{{medals.code}}</td>
+                    <td>{{medals.description}}</td>
+                    <td>{{medals.points}}</td>
+                    <td>
+                        <img data-ng-src="{{'data:' + medals.iconContentType + ';base64,' + medals.icon}}" style="max-height: 30px;" ng-if="medals.icon"/> {{medals.iconContentType}} {{byteSize(medals.icon)}}
+                    </td>
+                    <td>
+                        <a ui-sref="petOwner.detail({id:medals.petOwner.id})">{{medals.petOwner.user.login}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="medals.detail({id:medals.id})"
+                                    class="btn btn-info btn-sm"> 
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="medals.edit({id:medals.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="medals.delete({id:medals.id})"
+                                    class="btn btn-danger btn-sm">                                    
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <uib-pagination class="pagination-sm" total-items="totalItems" ng-model="page" ng-change="loadAll()"></uib-pagination>
+    </div>
+</div>

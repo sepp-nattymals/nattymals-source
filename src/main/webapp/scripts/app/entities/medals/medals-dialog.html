@@ -1,0 +1,117 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myMedalsLabel" translate="nattymalsApp.medals.home.createOrEditLabel">Create or edit a Medals</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id" translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="medals.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="nattymalsApp.medals.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                    ng-model="medals.name"
+                    required />
+            <div ng-show="editForm.name.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.name.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="nattymalsApp.medals.code" for="field_code">Code</label>
+            <input type="text" class="form-control" name="code" id="field_code"
+                    ng-model="medals.code"
+                    required />
+            <div ng-show="editForm.code.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.code.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="nattymalsApp.medals.description" for="field_description">Description</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                    ng-model="medals.description"
+                    required />
+            <div ng-show="editForm.description.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.description.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="nattymalsApp.medals.points" for="field_points">Points</label>
+            <input type="number" class="form-control" name="points" id="field_points"
+                    ng-model="medals.points"
+                    required min="0" />
+            <div ng-show="editForm.points.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.points.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.points.$error.min" translate="entity.validation.min" translate-value-min="0">
+                    This field should be more than 0.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.points.$error.number" translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group" ngf-drop ngf-change="setIcon($file, medals)" ngf-pattern="'image/*'">
+            <label class="control-label" translate="nattymalsApp.medals.icon" for="field_icon">Icon</label>
+            <div>
+                <img data-ng-src="{{'data:' + medals.iconContentType + ';base64,' + medals.icon}}" style="max-height: 100px;" ng-if="medals.icon"/>
+                <div class="help-block clearfix">
+                    <span class="pull-left">{{medals.iconContentType}} {{byteSize(medals.icon)}}</span>
+                    <button ng-click="medals.icon=null;medals.iconContentType=null;"
+                            ng-if="medals.icon"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="file" ngf-select class="btn btn-default btn-block"
+                        ngf-change="setIcon($file, medals)" accept="image/*" translate="entity.action.addimage">
+                    Add image
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="icon" id="field_icon"
+                    ng-model="medals.icon"
+                    required />
+            <input type="hidden" class="form-control" name="iconContentType" id="field_iconContentType"
+                    ng-model="medals.iconContentType" />
+            <div ng-show="editForm.icon.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.icon.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label translate="nattymalsApp.medals.petOwner" for="field_petOwner">petOwner</label>
+            <select class="form-control" id="field_petOwner" name="petOwner" ng-model="medals.petOwner" ng-options="petOwner as petOwner.user.login for petOwner in petowners track by petOwner.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

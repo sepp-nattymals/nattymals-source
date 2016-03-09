@@ -1,0 +1,26 @@
+{
+    "nattymalsApp": {
+        "adoption" : {
+            "home": {
+                "title": "Adoptions",
+                "createLabel": "Crear nuevo Adoption",
+                "createOrEditLabel": "Crear o editar Adoption",
+                "search": "Search for Adoption"
+            },
+            "created": "Un nuevo Adoption ha sido creado con el identificador {{ param }}",
+            "updated": "Un Adoption ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Adoption ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Adoption {{ id }}?"
+            },
+            "detail": {
+                "title": "Adoption"
+            },
+            "informativeText": "InformativeText",
+            "creationDate": "CreationDate",
+            "modificationDate": "ModificationDate",
+            "isRemoved": "IsRemoved",
+            "pet": "Pet"
+        }
+    }
+}

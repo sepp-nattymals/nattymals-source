@@ -1,0 +1,28 @@
+{
+    "nattymalsApp": {
+        "medals" : {
+            "home": {
+                "title": "Medalss",
+                "createLabel": "Créer un nouveau Medals",
+                "createOrEditLabel": "Créer ou éditer un Medals",
+                "search": "Search for Medals"
+            },
+            "created": "Un nouveau Medals a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Medals avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Medals avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Medals {{ id }} ?"
+            },
+            "detail": {
+                "title": "Medals"
+            },
+            "name": "Name",
+            "code": "Code",
+            "description": "Description",
+            "points": "Points",
+            "icon": "Icon",
+            "petOwner": "PetOwner"
+        }
+    }
+}
+
