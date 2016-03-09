@@ -1,0 +1,25 @@
+{
+    "nattymalsApp": {
+        "premiumSubscription" : {
+            "home": {
+                "title": "PremiumSubscriptions",
+                "createLabel": "Create a new PremiumSubscription",
+                "createOrEditLabel": "Create or edit a PremiumSubscription",
+                "search": "Search for PremiumSubscription"
+            },
+            "created": "A new PremiumSubscription is created with identifier {{ param }}",
+            "updated": "A PremiumSubscription is updated with identifier {{ param }}",
+            "deleted": "A PremiumSubscription is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete PremiumSubscription {{ id }}?"
+            },
+            "detail": {
+                "title": "PremiumSubscription"
+            },
+            "startDate": "StartDate",
+            "endDate": "EndDate",
+            "fee": "Fee",
+            "customer": "Customer"
+        }
+    }
+}

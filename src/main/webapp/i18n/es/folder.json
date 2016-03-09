@@ -1,0 +1,24 @@
+{
+    "nattymalsApp": {
+        "folder" : {
+            "home": {
+                "title": "Folders",
+                "createLabel": "Crear nuevo Folder",
+                "createOrEditLabel": "Crear o editar Folder",
+                "search": "Search for Folder"
+            },
+            "created": "Un nuevo Folder ha sido creado con el identificador {{ param }}",
+            "updated": "Un Folder ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Folder ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Folder {{ id }}?"
+            },
+            "detail": {
+                "title": "Folder"
+            },
+            "name": "Name",
+            "customer": "Customer",
+            "message": "Message"
+        }
+    }
+}
