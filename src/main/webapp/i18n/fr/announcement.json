@@ -1,0 +1,28 @@
+{
+    "nattymalsApp": {
+        "announcement" : {
+            "home": {
+                "title": "Announcements",
+                "createLabel": "Créer un nouveau Announcement",
+                "createOrEditLabel": "Créer ou éditer un Announcement",
+                "search": "Search for Announcement"
+            },
+            "created": "Un nouveau Announcement a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Announcement avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Announcement avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Announcement {{ id }} ?"
+            },
+            "detail": {
+                "title": "Announcement"
+            },
+            "title": "Title",
+            "companyName": "CompanyName",
+            "startDate": "StartDate",
+            "endDate": "EndDate",
+            "photo": "Photo",
+            "administrator": "Administrator"
+        }
+    }
+}
+

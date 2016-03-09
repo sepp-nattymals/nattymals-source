@@ -22,5 +22,10 @@
     <include file="classpath:config/liquibase/changelog/20160309004942_added_entity_VeterinarianComment.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160309001931_added_entity_Adoption.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160309002044_added_entity_PetRating.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160309143844_added_entity_Administrator.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160309144201_added_entity_Discount.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160309144340_added_entity_Announcement.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160309144451_added_entity_PetCompany.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160309144711_added_entity_Contract.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
 </databaseChangeLog>

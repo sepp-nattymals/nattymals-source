@@ -1,0 +1,86 @@
+
+<div>
+    <h2><span translate="nattymalsApp.contract.detail.title">Contract</span> {{contract.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="nattymalsApp.contract.title">Title</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{contract.title}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="nattymalsApp.contract.fee">Fee</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{contract.fee}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="nattymalsApp.contract.referenceCode">ReferenceCode</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{contract.referenceCode}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="nattymalsApp.contract.creationDate">CreationDate</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{contract.creationDate | date:'medium'}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="nattymalsApp.contract.terminationDate">TerminationDate</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{contract.terminationDate | date:'medium'}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="nattymalsApp.contract.terms">Terms</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{contract.terms}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="nattymalsApp.contract.registered">Registered</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{contract.registered}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="nattymalsApp.contract.petCompany">petCompany</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="petCompany.detail({id:contract.petCompany.id})">{{contract.petCompany.id}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

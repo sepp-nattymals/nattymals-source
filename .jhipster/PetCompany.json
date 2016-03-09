@@ -1,0 +1,33 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "contract",
+            "otherEntityName": "contract",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "petCompany"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "bankAccount",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "nif",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20160309144451",
+    "dto": "no",
+    "service": "serviceClass",
+    "pagination": "pagination"
+}

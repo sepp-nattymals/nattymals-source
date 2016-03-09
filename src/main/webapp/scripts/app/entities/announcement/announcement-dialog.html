@@ -1,0 +1,111 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myAnnouncementLabel" translate="nattymalsApp.announcement.home.createOrEditLabel">Create or edit a Announcement</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id" translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="announcement.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="nattymalsApp.announcement.title" for="field_title">Title</label>
+            <input type="text" class="form-control" name="title" id="field_title"
+                    ng-model="announcement.title"
+                    required />
+            <div ng-show="editForm.title.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.title.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="nattymalsApp.announcement.companyName" for="field_companyName">CompanyName</label>
+            <input type="text" class="form-control" name="companyName" id="field_companyName"
+                    ng-model="announcement.companyName"
+                    required />
+            <div ng-show="editForm.companyName.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.companyName.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="nattymalsApp.announcement.startDate" for="field_startDate">StartDate</label>
+            <input type="datetime-local" class="form-control" name="startDate" id="field_startDate"
+                    ng-model="announcement.startDate"
+                    required />
+            <div ng-show="editForm.startDate.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.startDate.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.startDate.$error.ZonedDateTimelocal" translate="entity.validation.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="nattymalsApp.announcement.endDate" for="field_endDate">EndDate</label>
+            <input type="datetime-local" class="form-control" name="endDate" id="field_endDate"
+                    ng-model="announcement.endDate"
+                    required />
+            <div ng-show="editForm.endDate.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.endDate.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.endDate.$error.ZonedDateTimelocal" translate="entity.validation.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </p>
+            </div>
+        </div>
+        <div class="form-group" ngf-drop ngf-change="setPhoto($file, announcement)" ngf-pattern="'image/*'">
+            <label class="control-label" translate="nattymalsApp.announcement.photo" for="field_photo">Photo</label>
+            <div>
+                <img data-ng-src="{{'data:' + announcement.photoContentType + ';base64,' + announcement.photo}}" style="max-height: 100px;" ng-if="announcement.photo"/>
+                <div class="help-block clearfix">
+                    <span class="pull-left">{{announcement.photoContentType}} {{byteSize(announcement.photo)}}</span>
+                    <button ng-click="announcement.photo=null;announcement.photoContentType=null;"
+                            ng-if="announcement.photo"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="file" ngf-select class="btn btn-default btn-block"
+                        ngf-change="setPhoto($file, announcement)" accept="image/*" translate="entity.action.addimage">
+                    Add image
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="photo" id="field_photo"
+                    ng-model="announcement.photo"
+                     />
+            <input type="hidden" class="form-control" name="photoContentType" id="field_photoContentType"
+                    ng-model="announcement.photoContentType" />
+        </div>
+
+        <div class="form-group">
+            <label translate="nattymalsApp.announcement.administrator" for="field_administrator">administrator</label>
+            <select class="form-control" id="field_administrator" name="administrator" ng-model="announcement.administrator" ng-options="administrator as administrator.id for administrator in administrators track by administrator.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

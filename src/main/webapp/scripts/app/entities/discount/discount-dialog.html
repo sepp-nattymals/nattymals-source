@@ -1,0 +1,126 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myDiscountLabel" translate="nattymalsApp.discount.home.createOrEditLabel">Create or edit a Discount</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id" translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="discount.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="nattymalsApp.discount.companyName" for="field_companyName">CompanyName</label>
+            <input type="text" class="form-control" name="companyName" id="field_companyName"
+                    ng-model="discount.companyName"
+                    required />
+            <div ng-show="editForm.companyName.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.companyName.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="nattymalsApp.discount.title" for="field_title">Title</label>
+            <input type="text" class="form-control" name="title" id="field_title"
+                    ng-model="discount.title"
+                    required />
+            <div ng-show="editForm.title.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.title.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="nattymalsApp.discount.description" for="field_description">Description</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                    ng-model="discount.description"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="nattymalsApp.discount.code" for="field_code">Code</label>
+            <input type="text" class="form-control" name="code" id="field_code"
+                    ng-model="discount.code"
+                    required />
+            <div ng-show="editForm.code.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.code.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="nattymalsApp.discount.discountRate" for="field_discountRate">DiscountRate</label>
+            <input type="number" class="form-control" name="discountRate" id="field_discountRate"
+                    ng-model="discount.discountRate"
+                    required min="0" />
+            <div ng-show="editForm.discountRate.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.discountRate.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.discountRate.$error.min" translate="entity.validation.min" translate-value-min="0">
+                    This field should be more than 0.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.discountRate.$error.number" translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="nattymalsApp.discount.startDate" for="field_startDate">StartDate</label>
+            <input type="datetime-local" class="form-control" name="startDate" id="field_startDate"
+                    ng-model="discount.startDate"
+                    required />
+            <div ng-show="editForm.startDate.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.startDate.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.startDate.$error.ZonedDateTimelocal" translate="entity.validation.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="nattymalsApp.discount.endDate" for="field_endDate">EndDate</label>
+            <input type="datetime-local" class="form-control" name="endDate" id="field_endDate"
+                    ng-model="discount.endDate"
+                    required />
+            <div ng-show="editForm.endDate.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.endDate.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.endDate.$error.ZonedDateTimelocal" translate="entity.validation.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label translate="nattymalsApp.discount.administrator" for="field_administrator">administrator</label>
+            <select class="form-control" id="field_administrator" name="administrator" ng-model="discount.administrator" ng-options="administrator as administrator.id for administrator in administrators track by administrator.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

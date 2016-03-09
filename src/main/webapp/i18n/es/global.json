@@ -24,6 +24,11 @@
                 "veterinarianComment": "VeterinarianComment",
                 "adoption": "Adoption",
                 "petRating": "PetRating",
+                "administrator": "Administrator",
+                "discount": "Discount",
+                "announcement": "Announcement",
+                "petCompany": "PetCompany",
+                "contract": "Contract",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
