@@ -1,0 +1,111 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "petOwner",
+            "otherEntityName": "petOwner",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "user.login"
+        },
+        {
+            "relationshipId": 2,
+            "relationshipName": "petComment",
+            "otherEntityName": "petComment",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "pet"
+        },
+        {
+            "relationshipId": 3,
+            "relationshipName": "adoption",
+            "otherEntityName": "adoption",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "pet"
+        },
+        {
+            "relationshipId": 4,
+            "relationshipName": "petRating",
+            "otherEntityName": "petRating",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "pet"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "type",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "sex",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "weight",
+            "fieldType": "Double",
+            "fieldValidateRules": [
+                "required",
+                "min"
+            ],
+            "fieldValidateRulesMin": 0
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "hasPedigree",
+            "fieldType": "Boolean",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "race",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldId": 6,
+            "fieldName": "birthDate",
+            "fieldType": "LocalDate",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldId": 7,
+            "fieldName": "photo",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image",
+            "fieldValidateRules": []
+        },
+        {
+            "fieldId": 8,
+            "fieldName": "dating",
+            "fieldType": "Boolean",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+	{
+            "fieldId": 9,
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20160309000925",
+    "dto": "no",
+    "service": "serviceClass",
+    "pagination": "pagination"
+}

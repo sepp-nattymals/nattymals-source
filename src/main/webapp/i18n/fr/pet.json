@@ -1,0 +1,35 @@
+{
+    "nattymalsApp": {
+        "pet" : {
+            "home": {
+                "title": "Pets",
+                "createLabel": "Créer un nouveau Pet",
+                "createOrEditLabel": "Créer ou éditer un Pet",
+                "search": "Search for Pet"
+            },
+            "created": "Un nouveau Pet a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Pet avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Pet avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Pet {{ id }} ?"
+            },
+            "detail": {
+                "title": "Pet"
+            },
+            "type": "Type",
+            "sex": "Sex",
+            "weight": "Weight",
+            "hasPedigree": "HasPedigree",
+            "race": "Race",
+            "birthDate": "BirthDate",
+            "photo": "Photo",
+            "dating": "Dating",
+            "name": "Name",
+            "petOwner": "PetOwner",
+            "petComment": "PetComment",
+            "adoption": "Adoption",
+            "petRating": "PetRating"
+        }
+    }
+}
+

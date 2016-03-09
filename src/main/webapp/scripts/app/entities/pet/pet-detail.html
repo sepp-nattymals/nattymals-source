@@ -1,0 +1,103 @@
+
+<div>
+    <h2><span translate="nattymalsApp.pet.detail.title">Pet</span> {{pet.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="nattymalsApp.pet.type">Type</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{pet.type}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="nattymalsApp.pet.sex">Sex</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{pet.sex}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="nattymalsApp.pet.weight">Weight</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{pet.weight}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="nattymalsApp.pet.hasPedigree">HasPedigree</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{pet.hasPedigree}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="nattymalsApp.pet.race">Race</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{pet.race}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="nattymalsApp.pet.birthDate">BirthDate</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{pet.birthDate | date:'mediumDate'}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="nattymalsApp.pet.photo">Photo</span>
+                </td>
+                <td>
+                    <img data-ng-src="{{'data:' + pet.photoContentType + ';base64,' + pet.photo}}" style="max-width: 100%;" ng-if="pet.photo"/>
+                    <div>{{pet.photoContentType}}  {{byteSize(pet.photo)}}</div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="nattymalsApp.pet.dating">Dating</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{pet.dating}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="nattymalsApp.pet.name">Name</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{pet.name}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="nattymalsApp.pet.petOwner">petOwner</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="petOwner.detail({id:pet.petOwner.id})">{{pet.petOwner.user.login}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

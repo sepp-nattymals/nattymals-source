@@ -1,0 +1,163 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myPetLabel" translate="nattymalsApp.pet.home.createOrEditLabel">Create or edit a Pet</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id" translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="pet.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="nattymalsApp.pet.type" for="field_type">Type</label>
+            <input type="text" class="form-control" name="type" id="field_type"
+                    ng-model="pet.type"
+                    required />
+            <div ng-show="editForm.type.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.type.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="nattymalsApp.pet.sex" for="field_sex">Sex</label>
+            <input type="text" class="form-control" name="sex" id="field_sex"
+                    ng-model="pet.sex"
+                    required />
+            <div ng-show="editForm.sex.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.sex.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="nattymalsApp.pet.weight" for="field_weight">Weight</label>
+            <input type="number" class="form-control" name="weight" id="field_weight"
+                    ng-model="pet.weight"
+                    required min="0" />
+            <div ng-show="editForm.weight.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.weight.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.weight.$error.min" translate="entity.validation.min" translate-value-min="0">
+                    This field should be more than 0.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.weight.$error.number" translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="nattymalsApp.pet.hasPedigree" for="field_hasPedigree">HasPedigree</label>
+            <input type="checkbox" class="form-control" name="hasPedigree" id="field_hasPedigree"
+                    ng-model="pet.hasPedigree"
+                     />
+            <div ng-show="editForm.hasPedigree.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.hasPedigree.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="nattymalsApp.pet.race" for="field_race">Race</label>
+            <input type="text" class="form-control" name="race" id="field_race"
+                    ng-model="pet.race"
+                    required />
+            <div ng-show="editForm.race.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.race.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="nattymalsApp.pet.birthDate" for="field_birthDate">BirthDate</label>
+                <div class="input-group">
+                    <input id="field_birthDate" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="pet.birthDate" is-open="datePickerForBirthDate.status.opened"
+                    required/>
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="datePickerForBirthDateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+            <div ng-show="editForm.birthDate.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.birthDate.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group" ngf-drop ngf-change="setPhoto($file, pet)" ngf-pattern="'image/*'">
+            <label class="control-label" translate="nattymalsApp.pet.photo" for="field_photo">Photo</label>
+            <div>
+                <img data-ng-src="{{'data:' + pet.photoContentType + ';base64,' + pet.photo}}" style="max-height: 100px;" ng-if="pet.photo"/>
+                <div class="help-block clearfix">
+                    <span class="pull-left">{{pet.photoContentType}} {{byteSize(pet.photo)}}</span>
+                    <button ng-click="pet.photo=null;pet.photoContentType=null;"
+                            ng-if="pet.photo"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="file" ngf-select class="btn btn-default btn-block"
+                        ngf-change="setPhoto($file, pet)" accept="image/*" translate="entity.action.addimage">
+                    Add image
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="photo" id="field_photo"
+                    ng-model="pet.photo"
+                     />
+            <input type="hidden" class="form-control" name="photoContentType" id="field_photoContentType"
+                    ng-model="pet.photoContentType" />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="nattymalsApp.pet.dating" for="field_dating">Dating</label>
+            <input type="checkbox" class="form-control" name="dating" id="field_dating"
+                    ng-model="pet.dating"
+                     />
+            <div ng-show="editForm.dating.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.dating.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="nattymalsApp.pet.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                    ng-model="pet.name"
+                    required />
+            <div ng-show="editForm.name.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.name.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label translate="nattymalsApp.pet.petOwner" for="field_petOwner">petOwner</label>
+            <select class="form-control" id="field_petOwner" name="petOwner" ng-model="pet.petOwner" ng-options="petOwner as petOwner.user.login for petOwner in petowners track by petOwner.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>
