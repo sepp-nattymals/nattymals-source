@@ -14,7 +14,7 @@ import java.util.Objects;
  */
 @Entity
 @Table(name = "pet_company")
-public class PetCompany implements Serializable {
+public class PetCompany extends Actor implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
