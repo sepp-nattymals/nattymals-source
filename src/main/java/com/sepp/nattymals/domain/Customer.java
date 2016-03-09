@@ -12,7 +12,7 @@ import java.util.Objects;
  * A Customer.
  */
 @MappedSuperclass
-public abstract class Customer implements Serializable {
+public abstract class Customer extends Actor implements Serializable {
 
     @OneToMany(mappedBy = "customer")
     @JsonIgnore

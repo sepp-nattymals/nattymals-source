@@ -10,6 +10,7 @@
                 "actor": "Actor",
                 "payment": "Payment",
                 "customer": "Customer",
+                "petOwner": "PetOwner",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

@@ -1,0 +1,77 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "historicalPoints",
+            "otherEntityName": "historicalPoints",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "petOwner"
+        },
+        {
+            "relationshipId": 2,
+            "relationshipName": "veterinarianComment",
+            "otherEntityName": "veterinarianComment",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "petOwner"
+        },
+        {
+            "relationshipId": 3,
+            "relationshipName": "petComment",
+            "otherEntityName": "petComment",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "petOwner"
+        },
+        {
+            "relationshipId": 4,
+            "relationshipName": "medals",
+            "otherEntityName": "medals",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "petOwner"
+        },
+        {
+            "relationshipId": 5,
+            "relationshipName": "pet",
+            "otherEntityName": "pet",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "petOwner"
+        },
+        {
+            "relationshipId": 6,
+            "relationshipName": "petRating",
+            "otherEntityName": "petRating",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "petOwner"
+        },
+        {
+            "relationshipId": 7,
+            "relationshipName": "veterinarianRating",
+            "otherEntityName": "veterinarianRating",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "petOwner"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "totalPoints",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required",
+                "min"
+            ],
+            "fieldValidateRulesMin": 0
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "isBlocked",
+            "fieldType": "Boolean",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20160308235843",
+    "dto": "no",
+    "service": "serviceClass",
+    "pagination": "pagination"
+}

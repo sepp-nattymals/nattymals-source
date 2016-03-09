@@ -1,0 +1,30 @@
+{
+    "nattymalsApp": {
+        "petOwner" : {
+            "home": {
+                "title": "PetOwners",
+                "createLabel": "Crear nuevo PetOwner",
+                "createOrEditLabel": "Crear o editar PetOwner",
+                "search": "Search for PetOwner"
+            },
+            "created": "Un nuevo PetOwner ha sido creado con el identificador {{ param }}",
+            "updated": "Un PetOwner ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un PetOwner ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar PetOwner {{ id }}?"
+            },
+            "detail": {
+                "title": "PetOwner"
+            },
+            "totalPoints": "TotalPoints",
+            "isBlocked": "IsBlocked",
+            "historicalPoints": "HistoricalPoints",
+            "veterinarianComment": "VeterinarianComment",
+            "petComment": "PetComment",
+            "medals": "Medals",
+            "pet": "Pet",
+            "petRating": "PetRating",
+            "veterinarianRating": "VeterinarianRating"
+        }
+    }
+}

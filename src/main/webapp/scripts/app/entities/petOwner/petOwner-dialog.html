@@ -1,0 +1,58 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myPetOwnerLabel" translate="nattymalsApp.petOwner.home.createOrEditLabel">Create or edit a PetOwner</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id" translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="petOwner.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="nattymalsApp.petOwner.totalPoints" for="field_totalPoints">TotalPoints</label>
+            <input type="number" class="form-control" name="totalPoints" id="field_totalPoints"
+                    ng-model="petOwner.totalPoints"
+                    required min="0" />
+            <div ng-show="editForm.totalPoints.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.totalPoints.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.totalPoints.$error.min" translate="entity.validation.min" translate-value-min="0">
+                    This field should be more than 0.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.totalPoints.$error.number" translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="nattymalsApp.petOwner.isBlocked" for="field_isBlocked">IsBlocked</label>
+            <input type="checkbox" class="form-control" name="isBlocked" id="field_isBlocked"
+                    ng-model="petOwner.isBlocked"
+                     />
+            <div ng-show="editForm.isBlocked.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.isBlocked.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>
