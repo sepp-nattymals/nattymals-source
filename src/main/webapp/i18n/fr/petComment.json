@@ -1,0 +1,26 @@
+{
+    "nattymalsApp": {
+        "petComment" : {
+            "home": {
+                "title": "PetComments",
+                "createLabel": "Créer un nouveau PetComment",
+                "createOrEditLabel": "Créer ou éditer un PetComment",
+                "search": "Search for PetComment"
+            },
+            "created": "Un nouveau PetComment a été créé avec l'identifiant {{ param }}",
+            "updated": "Le PetComment avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le PetComment avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le PetComment {{ id }} ?"
+            },
+            "detail": {
+                "title": "PetComment"
+            },
+            "creationDate": "CreationDate",
+            "text": "Text",
+            "petOwner": "PetOwner",
+            "pet": "Pet"
+        }
+    }
+}
+

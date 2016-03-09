@@ -1,0 +1,54 @@
+
+<div>
+    <h2><span translate="nattymalsApp.petComment.detail.title">PetComment</span> {{petComment.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="nattymalsApp.petComment.creationDate">CreationDate</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{petComment.creationDate | date:'medium'}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="nattymalsApp.petComment.text">Text</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{petComment.text}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="nattymalsApp.petComment.petOwner">petOwner</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="petOwner.detail({id:petComment.petOwner.id})">{{petComment.petOwner.user.login}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="nattymalsApp.petComment.pet">pet</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="pet.detail({id:petComment.pet.id})">{{petComment.pet.name}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

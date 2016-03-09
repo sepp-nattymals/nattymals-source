@@ -1,0 +1,69 @@
+<div>
+    <h2 translate="nattymalsApp.petComment.home.title">PetComments</h2>
+    <jh-alert></jh-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="petComment.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span 
+                        translate="nattymalsApp.petComment.home.createLabel">Create new PetComment
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
+                    <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="creationDate"><span translate="nattymalsApp.petComment.creationDate">CreationDate</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="text"><span translate="nattymalsApp.petComment.text">Text</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="petOwner.user.login"><span translate="nattymalsApp.petComment.petOwner">petOwner</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="pet.name"><span translate="nattymalsApp.petComment.pet">pet</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="petComment in petComments track by petComment.id">
+                    <td><a ui-sref="petComment.detail({id:petComment.id})">{{petComment.id}}</a></td>
+                    <td>{{petComment.creationDate | date:'medium'}}</td>
+                    <td>{{petComment.text}}</td>
+                    <td>
+                        <a ui-sref="petOwner.detail({id:petComment.petOwner.id})">{{petComment.petOwner.user.login}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="pet.detail({id:petComment.pet.id})">{{petComment.pet.name}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="petComment.detail({id:petComment.id})"
+                                    class="btn btn-info btn-sm"> 
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="petComment.edit({id:petComment.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="petComment.delete({id:petComment.id})"
+                                    class="btn btn-danger btn-sm">                                    
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <uib-pagination class="pagination-sm" total-items="totalItems" ng-model="page" ng-change="loadAll()"></uib-pagination>
+    </div>
+</div>
