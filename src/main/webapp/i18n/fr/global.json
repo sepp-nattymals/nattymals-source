@@ -21,6 +21,7 @@
                 "veterinarian": "Veterinarian",
                 "clinic": "Clinic",
                 "veterinarianRating": "VeterinarianRating",
+                "veterinarianComment": "VeterinarianComment",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

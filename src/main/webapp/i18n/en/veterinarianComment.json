@@ -1,0 +1,25 @@
+{
+    "nattymalsApp": {
+        "veterinarianComment" : {
+            "home": {
+                "title": "VeterinarianComments",
+                "createLabel": "Create a new VeterinarianComment",
+                "createOrEditLabel": "Create or edit a VeterinarianComment",
+                "search": "Search for VeterinarianComment"
+            },
+            "created": "A new VeterinarianComment is created with identifier {{ param }}",
+            "updated": "A VeterinarianComment is updated with identifier {{ param }}",
+            "deleted": "A VeterinarianComment is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete VeterinarianComment {{ id }}?"
+            },
+            "detail": {
+                "title": "VeterinarianComment"
+            },
+            "creationDate": "CreationDate",
+            "text": "Text",
+            "veterinarian": "Veterinarian",
+            "petOwner": "PetOwner"
+        }
+    }
+}

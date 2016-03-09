@@ -1,0 +1,54 @@
+
+<div>
+    <h2><span translate="nattymalsApp.veterinarianComment.detail.title">VeterinarianComment</span> {{veterinarianComment.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="nattymalsApp.veterinarianComment.creationDate">CreationDate</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{veterinarianComment.creationDate | date:'medium'}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="nattymalsApp.veterinarianComment.text">Text</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{veterinarianComment.text}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="nattymalsApp.veterinarianComment.veterinarian">veterinarian</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="veterinarian.detail({id:veterinarianComment.veterinarian.id})">{{veterinarianComment.veterinarian.id}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="nattymalsApp.veterinarianComment.petOwner">petOwner</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="petOwner.detail({id:veterinarianComment.petOwner.id})">{{veterinarianComment.petOwner.id}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

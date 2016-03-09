@@ -1,0 +1,69 @@
+<div>
+    <h2 translate="nattymalsApp.veterinarianComment.home.title">VeterinarianComments</h2>
+    <jh-alert></jh-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="veterinarianComment.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span 
+                        translate="nattymalsApp.veterinarianComment.home.createLabel">Create new VeterinarianComment
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
+                    <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="creationDate"><span translate="nattymalsApp.veterinarianComment.creationDate">CreationDate</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="text"><span translate="nattymalsApp.veterinarianComment.text">Text</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="veterinarian.id"><span translate="nattymalsApp.veterinarianComment.veterinarian">veterinarian</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="petOwner.id"><span translate="nattymalsApp.veterinarianComment.petOwner">petOwner</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="veterinarianComment in veterinarianComments track by veterinarianComment.id">
+                    <td><a ui-sref="veterinarianComment.detail({id:veterinarianComment.id})">{{veterinarianComment.id}}</a></td>
+                    <td>{{veterinarianComment.creationDate | date:'medium'}}</td>
+                    <td>{{veterinarianComment.text}}</td>
+                    <td>
+                        <a ui-sref="veterinarian.detail({id:veterinarianComment.veterinarian.id})">{{veterinarianComment.veterinarian.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="petOwner.detail({id:veterinarianComment.petOwner.id})">{{veterinarianComment.petOwner.id}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="veterinarianComment.detail({id:veterinarianComment.id})"
+                                    class="btn btn-info btn-sm"> 
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="veterinarianComment.edit({id:veterinarianComment.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="veterinarianComment.delete({id:veterinarianComment.id})"
+                                    class="btn btn-danger btn-sm">                                    
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <uib-pagination class="pagination-sm" total-items="totalItems" ng-model="page" ng-change="loadAll()"></uib-pagination>
+    </div>
+</div>
