@@ -1,0 +1,25 @@
+{
+    "nattymalsApp": {
+        "historicalPoints" : {
+            "home": {
+                "title": "HistoricalPointss",
+                "createLabel": "Créer un nouveau HistoricalPoints",
+                "createOrEditLabel": "Créer ou éditer un HistoricalPoints",
+                "search": "Search for HistoricalPoints"
+            },
+            "created": "Un nouveau HistoricalPoints a été créé avec l'identifiant {{ param }}",
+            "updated": "Le HistoricalPoints avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le HistoricalPoints avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le HistoricalPoints {{ id }} ?"
+            },
+            "detail": {
+                "title": "HistoricalPoints"
+            },
+            "description": "Description",
+            "operationPoints": "OperationPoints",
+            "petOwner": "PetOwner"
+        }
+    }
+}
+

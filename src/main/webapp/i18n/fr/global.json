@@ -12,6 +12,7 @@
                 "customer": "Customer",
                 "petOwner": "PetOwner",
                 "historicalPoints": "HistoricalPoints",
+                "pet": "Pet",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
