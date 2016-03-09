@@ -1,0 +1,62 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myPetRatingLabel" translate="nattymalsApp.petRating.home.createOrEditLabel">Create or edit a PetRating</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id" translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="petRating.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="nattymalsApp.petRating.rating" for="field_rating">Rating</label>
+            <input type="number" class="form-control" name="rating" id="field_rating"
+                    ng-model="petRating.rating"
+                    required min="1" max="5" />
+            <div ng-show="editForm.rating.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.rating.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.rating.$error.min" translate="entity.validation.min" translate-value-min="1">
+                    This field should be more than 1.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.rating.$error.max" translate="entity.validation.max" translate-value-max="5">
+                    This field cannot be more than 5.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.rating.$error.number" translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label translate="nattymalsApp.petRating.petOwner" for="field_petOwner">petOwner</label>
+            <select class="form-control" id="field_petOwner" name="petOwner" ng-model="petRating.petOwner" ng-options="petOwner as petOwner.user.login for petOwner in petowners track by petOwner.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label translate="nattymalsApp.petRating.pet" for="field_pet">pet</label>
+            <select class="form-control" id="field_pet" name="pet" ng-model="petRating.pet" ng-options="pet as pet.name for pet in pets track by pet.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

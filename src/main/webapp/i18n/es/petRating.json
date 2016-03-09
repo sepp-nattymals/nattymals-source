@@ -1,0 +1,24 @@
+{
+    "nattymalsApp": {
+        "petRating" : {
+            "home": {
+                "title": "PetRatings",
+                "createLabel": "Crear nuevo PetRating",
+                "createOrEditLabel": "Crear o editar PetRating",
+                "search": "Search for PetRating"
+            },
+            "created": "Un nuevo PetRating ha sido creado con el identificador {{ param }}",
+            "updated": "Un PetRating ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un PetRating ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar PetRating {{ id }}?"
+            },
+            "detail": {
+                "title": "PetRating"
+            },
+            "rating": "Rating",
+            "petOwner": "PetOwner",
+            "pet": "Pet"
+        }
+    }
+}

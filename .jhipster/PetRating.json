@@ -1,0 +1,36 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "petOwner",
+            "otherEntityName": "petOwner",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "user.login"
+        },
+        {
+            "relationshipId": 2,
+            "relationshipName": "pet",
+            "otherEntityName": "pet",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "name"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "rating",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required",
+                "min",
+                "max"
+            ],
+            "fieldValidateRulesMin": "1",
+            "fieldValidateRulesMax": "5"
+        }
+    ],
+    "changelogDate": "20160309002044",
+    "dto": "no",
+    "service": "serviceClass",
+    "pagination": "pagination"
+}
