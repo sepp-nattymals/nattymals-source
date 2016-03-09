@@ -12,8 +12,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
+import javax.persistence.UniqueConstraint;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.SafeHtml;
 import org.hibernate.validator.constraints.SafeHtml.WhiteListType;
 import org.hibernate.validator.constraints.URL;
@@ -24,27 +25,26 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  * A Veterinarian.
  */
 @Entity
-@Table(name = "veterinarian")
+@Table(name = "veterinarian",uniqueConstraints=@UniqueConstraint(columnNames="referee_number"))
 public class Veterinarian extends Customer implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @NotNull
+    @NotBlank
     @SafeHtml(whitelistType=WhiteListType.NONE)
     @Column(name = "bank_account", nullable=false)
     private String bankAccount;
     
-    @NotNull
     @URL
     @SafeHtml(whitelistType=WhiteListType.NONE)
-    @Column(name = "web_address", nullable=false)
+    @Column(name = "web_address")
     private String webAddress;
     
-    @NotNull
+    @NotBlank
     @SafeHtml(whitelistType=WhiteListType.NONE)
-    @Column(name = "referee_number", nullable=false)
+    @Column(name = "referee_number", nullable=false, unique=true)
     private String refereeNumber;
     
     @OneToMany(mappedBy = "veterinarian")

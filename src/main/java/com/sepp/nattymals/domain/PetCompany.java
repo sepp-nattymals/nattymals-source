@@ -13,8 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
-import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.SafeHtml;
 import org.hibernate.validator.constraints.SafeHtml.WhiteListType;
 
@@ -31,12 +31,12 @@ public class PetCompany extends Actor implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @NotNull
+    @NotBlank
     @SafeHtml(whitelistType=WhiteListType.NONE)
     @Column(name = "bank_account", nullable = false)
     private String bankAccount;
     
-    @NotNull
+    @NotBlank
     @SafeHtml(whitelistType=WhiteListType.NONE)
     @Column(name = "nif", nullable = false, unique=true)
     private String nif;

@@ -16,8 +16,10 @@ import javax.persistence.Table;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.SafeHtml;
 import org.hibernate.validator.constraints.SafeHtml.WhiteListType;
+import org.hibernate.validator.constraints.URL;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -31,12 +33,12 @@ public class Announcement implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @NotNull
+    @NotBlank
     @SafeHtml(whitelistType=WhiteListType.NONE)
     @Column(name = "title", nullable = false)
     private String title;
     
-    @NotNull
+    @NotBlank
     @SafeHtml(whitelistType=WhiteListType.NONE)
     @Column(name = "company_name", nullable = false)
     private String companyName;
@@ -55,7 +57,14 @@ public class Announcement implements Serializable {
     @Column(name = "photo")
     private byte[] photo;
     
-    @Column(name = "photo_content_type")        private String photoContentType;
+    @Column(name = "photo_content_type")        
+    private String photoContentType;
+    
+    @NotBlank
+    @SafeHtml(whitelistType=WhiteListType.NONE)
+    @URL
+    @Column(name = "url", nullable=false)
+    private String url;
     
     @NotNull
     @Valid
@@ -118,8 +127,16 @@ public class Announcement implements Serializable {
     public void setPhotoContentType(String photoContentType) {
         this.photoContentType = photoContentType;
     }
+    
+    public String getUrl() {
+		return url;
+	}
 
-    public Administrator getAdministrator() {
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	public Administrator getAdministrator() {
         return administrator;
     }
 

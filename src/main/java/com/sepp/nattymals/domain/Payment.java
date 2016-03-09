@@ -17,6 +17,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.SafeHtml;
 import org.hibernate.validator.constraints.SafeHtml.WhiteListType;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -32,7 +33,7 @@ public class Payment implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @NotNull
+    @NotBlank
     @SafeHtml(whitelistType=WhiteListType.NONE)
     @Column(name = "concept", nullable = false)
     private String concept;
@@ -48,9 +49,8 @@ public class Payment implements Serializable {
     @Column(name = "payment_date", nullable = false)
     private ZonedDateTime paymentDate;
     
-    @NotNull
     @SafeHtml(whitelistType=WhiteListType.NONE)
-    @Column(name = "comment", nullable = false)
+    @Column(name = "comment")
     private String comment;
     
     @NotNull

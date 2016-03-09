@@ -16,6 +16,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.SafeHtml;
 import org.hibernate.validator.constraints.SafeHtml.WhiteListType;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -31,7 +32,7 @@ public class Message implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @NotNull
+    @NotBlank
     @SafeHtml(whitelistType=WhiteListType.NONE)
     @Column(name = "text", nullable=false)
     private String text;
@@ -42,8 +43,9 @@ public class Message implements Serializable {
     @Column(name = "creation_date", nullable=false)
     private ZonedDateTime creationDate;
     
+    @NotBlank
     @SafeHtml(whitelistType=WhiteListType.NONE)
-    @Column(name = "subject")
+    @Column(name = "subject", nullable=false)
     private String subject;
     
     @NotNull

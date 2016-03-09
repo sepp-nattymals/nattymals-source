@@ -12,11 +12,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.SafeHtml;
 import org.hibernate.validator.constraints.SafeHtml.WhiteListType;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -25,14 +27,14 @@ import org.springframework.format.annotation.DateTimeFormat;
  * A Contract.
  */
 @Entity
-@Table(name = "contract")
+@Table(name = "contract", uniqueConstraints=@UniqueConstraint(columnNames="reference_code"))
 public class Contract implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @NotNull
+    @NotBlank
     @SafeHtml(whitelistType=WhiteListType.NONE)
     @Column(name = "title", nullable = false)
     private String title;
@@ -42,9 +44,9 @@ public class Contract implements Serializable {
     @Column(name = "fee", nullable = false)
     private Double fee;
     
-    @NotNull
+    @NotBlank
     @SafeHtml(whitelistType=WhiteListType.NONE)
-    @Column(name = "reference_code", nullable = false)
+    @Column(name = "reference_code", nullable = false, unique=true)
     private String referenceCode;
     
     @NotNull
@@ -58,8 +60,9 @@ public class Contract implements Serializable {
     @Column(name = "termination_date", nullable = false)
     private ZonedDateTime terminationDate;
     
+    @NotBlank
     @SafeHtml(whitelistType=WhiteListType.NONE)
-    @Column(name = "terms")
+    @Column(name = "terms", nullable=false)
     private String terms;
     
     @NotNull

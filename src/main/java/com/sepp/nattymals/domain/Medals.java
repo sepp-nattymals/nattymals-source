@@ -17,6 +17,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.SafeHtml;
 import org.hibernate.validator.constraints.SafeHtml.WhiteListType;
 
@@ -31,19 +32,18 @@ public class Medals implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @NotNull
+    @NotBlank
     @SafeHtml(whitelistType=WhiteListType.NONE)
     @Column(name = "name", nullable = false)
     private String name;
     
-    @NotNull
+    @NotBlank
     @SafeHtml(whitelistType=WhiteListType.NONE)
     @Column(name = "code", nullable = false)
     private String code;
     
-    @NotNull
     @SafeHtml(whitelistType=WhiteListType.NONE)
-    @Column(name = "description", nullable = false)
+    @Column(name = "description")
     private String description;
     
     @NotNull
@@ -56,7 +56,9 @@ public class Medals implements Serializable {
     @Column(name = "icon", nullable = false)
     private byte[] icon;
     
-    @Column(name = "icon_content_type", nullable = false)        private String iconContentType;
+    @NotBlank
+    @Column(name = "icon_content_type", nullable = false)        
+    private String iconContentType;
     
     @NotNull
     @Valid

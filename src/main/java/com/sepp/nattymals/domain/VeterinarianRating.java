@@ -13,9 +13,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.Valid;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Range;
 
 /**
  * A VeterinarianRating.
@@ -29,8 +29,7 @@ public class VeterinarianRating implements Serializable {
     private Long id;
 
     @NotNull
-    @Min(1)
-    @Max(5)
+    @Range(min=1, max=5)
     @Column(name = "rating", nullable=false)
     private Integer rating;
     

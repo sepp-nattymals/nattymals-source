@@ -15,6 +15,7 @@ import javax.persistence.Table;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.SafeHtml;
 import org.hibernate.validator.constraints.SafeHtml.WhiteListType;
 
@@ -29,29 +30,28 @@ public class Clinic implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @NotNull
+    @NotBlank
     @SafeHtml(whitelistType=WhiteListType.NONE)
     @Column(name = "address", nullable=false)
     private String address;
     
-    @NotNull
+    @NotBlank
     @SafeHtml(whitelistType=WhiteListType.NONE)
     @Column(name = "city", nullable=false)
     private String city;
     
-    @NotNull
+    @NotBlank
     @SafeHtml(whitelistType=WhiteListType.NONE)
     @Column(name = "province", nullable=false)
     private String province;
     
-    @NotNull
+    @NotBlank
     @SafeHtml(whitelistType=WhiteListType.NONE)
     @Column(name = "schedule", nullable=false)
     private String schedule;
     
-    @NotNull
     @SafeHtml(whitelistType=WhiteListType.NONE)
-    @Column(name = "phone_number", nullable=false)
+    @Column(name = "phone_number")
     private String phoneNumber;
     
     @NotNull
