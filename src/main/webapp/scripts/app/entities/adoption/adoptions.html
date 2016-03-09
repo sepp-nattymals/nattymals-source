@@ -1,0 +1,69 @@
+<div>
+    <h2 translate="nattymalsApp.adoption.home.title">Adoptions</h2>
+    <jh-alert></jh-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="adoption.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span 
+                        translate="nattymalsApp.adoption.home.createLabel">Create new Adoption
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
+                    <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="informativeText"><span translate="nattymalsApp.adoption.informativeText">InformativeText</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="creationDate"><span translate="nattymalsApp.adoption.creationDate">CreationDate</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="modificationDate"><span translate="nattymalsApp.adoption.modificationDate">ModificationDate</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="isRemoved"><span translate="nattymalsApp.adoption.isRemoved">IsRemoved</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="pet.name"><span translate="nattymalsApp.adoption.pet">pet</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="adoption in adoptions track by adoption.id">
+                    <td><a ui-sref="adoption.detail({id:adoption.id})">{{adoption.id}}</a></td>
+                    <td>{{adoption.informativeText}}</td>
+                    <td>{{adoption.creationDate | date:'medium'}}</td>
+                    <td>{{adoption.modificationDate | date:'medium'}}</td>
+                    <td>{{adoption.isRemoved}}</td>
+                    <td>
+                        <a ui-sref="pet.detail({id:adoption.pet.id})">{{adoption.pet.name}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="adoption.detail({id:adoption.id})"
+                                    class="btn btn-info btn-sm"> 
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="adoption.edit({id:adoption.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="adoption.delete({id:adoption.id})"
+                                    class="btn btn-danger btn-sm">                                    
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <uib-pagination class="pagination-sm" total-items="totalItems" ng-model="page" ng-change="loadAll()"></uib-pagination>
+    </div>
+</div>

@@ -1,0 +1,88 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myAdoptionLabel" translate="nattymalsApp.adoption.home.createOrEditLabel">Create or edit a Adoption</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id" translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="adoption.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="nattymalsApp.adoption.informativeText" for="field_informativeText">InformativeText</label>
+            <input type="text" class="form-control" name="informativeText" id="field_informativeText"
+                    ng-model="adoption.informativeText"
+                    required />
+            <div ng-show="editForm.informativeText.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.informativeText.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="nattymalsApp.adoption.creationDate" for="field_creationDate">CreationDate</label>
+            <input type="datetime-local" class="form-control" name="creationDate" id="field_creationDate"
+                    ng-model="adoption.creationDate"
+                    required />
+            <div ng-show="editForm.creationDate.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.creationDate.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.creationDate.$error.ZonedDateTimelocal" translate="entity.validation.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="nattymalsApp.adoption.modificationDate" for="field_modificationDate">ModificationDate</label>
+            <input type="datetime-local" class="form-control" name="modificationDate" id="field_modificationDate"
+                    ng-model="adoption.modificationDate"
+                    required />
+            <div ng-show="editForm.modificationDate.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.modificationDate.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.modificationDate.$error.ZonedDateTimelocal" translate="entity.validation.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="nattymalsApp.adoption.isRemoved" for="field_isRemoved">IsRemoved</label>
+            <input type="checkbox" class="form-control" name="isRemoved" id="field_isRemoved"
+                    ng-model="adoption.isRemoved"
+                     />
+            <div ng-show="editForm.isRemoved.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.isRemoved.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label translate="nattymalsApp.adoption.pet" for="field_pet">pet</label>
+            <select class="form-control" id="field_pet" name="pet" ng-model="adoption.pet" ng-options="pet as pet.name for pet in pets track by pet.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

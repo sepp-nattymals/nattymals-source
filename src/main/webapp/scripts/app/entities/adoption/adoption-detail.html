@@ -1,0 +1,62 @@
+
+<div>
+    <h2><span translate="nattymalsApp.adoption.detail.title">Adoption</span> {{adoption.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="nattymalsApp.adoption.informativeText">InformativeText</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{adoption.informativeText}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="nattymalsApp.adoption.creationDate">CreationDate</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{adoption.creationDate | date:'medium'}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="nattymalsApp.adoption.modificationDate">ModificationDate</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{adoption.modificationDate | date:'medium'}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="nattymalsApp.adoption.isRemoved">IsRemoved</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{adoption.isRemoved}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="nattymalsApp.adoption.pet">pet</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="pet.detail({id:adoption.pet.id})">{{adoption.pet.name}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>
