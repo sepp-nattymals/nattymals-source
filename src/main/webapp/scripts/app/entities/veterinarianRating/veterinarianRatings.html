@@ -1,0 +1,67 @@
+<div>
+    <h2 translate="nattymalsApp.veterinarianRating.home.title">VeterinarianRatings</h2>
+    <jh-alert></jh-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="veterinarianRating.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span 
+                        translate="nattymalsApp.veterinarianRating.home.createLabel">Create new VeterinarianRating
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
+                    <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="rating"><span translate="nattymalsApp.veterinarianRating.rating">Rating</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="veterinarian.id"><span translate="nattymalsApp.veterinarianRating.veterinarian">veterinarian</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="petOwner.id"><span translate="nattymalsApp.veterinarianRating.petOwner">petOwner</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="veterinarianRating in veterinarianRatings track by veterinarianRating.id">
+                    <td><a ui-sref="veterinarianRating.detail({id:veterinarianRating.id})">{{veterinarianRating.id}}</a></td>
+                    <td>{{veterinarianRating.rating}}</td>
+                    <td>
+                        <a ui-sref="veterinarian.detail({id:veterinarianRating.veterinarian.id})">{{veterinarianRating.veterinarian.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="petOwner.detail({id:veterinarianRating.petOwner.id})">{{veterinarianRating.petOwner.id}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="veterinarianRating.detail({id:veterinarianRating.id})"
+                                    class="btn btn-info btn-sm"> 
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="veterinarianRating.edit({id:veterinarianRating.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="veterinarianRating.delete({id:veterinarianRating.id})"
+                                    class="btn btn-danger btn-sm">                                    
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <uib-pagination class="pagination-sm" total-items="totalItems" ng-model="page" ng-change="loadAll()"></uib-pagination>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+{
+    "nattymalsApp": {
+        "veterinarianRating" : {
+            "home": {
+                "title": "VeterinarianRatings",
+                "createLabel": "Crear nuevo VeterinarianRating",
+                "createOrEditLabel": "Crear o editar VeterinarianRating",
+                "search": "Search for VeterinarianRating"
+            },
+            "created": "Un nuevo VeterinarianRating ha sido creado con el identificador {{ param }}",
+            "updated": "Un VeterinarianRating ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un VeterinarianRating ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar VeterinarianRating {{ id }}?"
+            },
+            "detail": {
+                "title": "VeterinarianRating"
+            },
+            "rating": "Rating",
+            "veterinarian": "Veterinarian",
+            "petOwner": "PetOwner"
+        }
+    }
+}
