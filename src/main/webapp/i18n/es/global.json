@@ -15,6 +15,7 @@
                 "pet": "Pet",
                 "petComment": "PetComment",
                 "medals": "Medals",
+                "adoption": "Adoption",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
