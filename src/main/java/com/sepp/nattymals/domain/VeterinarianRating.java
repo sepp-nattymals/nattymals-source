@@ -22,11 +22,7 @@ import org.hibernate.validator.constraints.Range;
  */
 @Entity
 @Table(name = "veterinarian_rating")
-public class VeterinarianRating implements Serializable {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+public class VeterinarianRating extends DomainEntity implements Serializable {
 
     @NotNull
     @Range(min=1, max=5)
@@ -44,14 +40,6 @@ public class VeterinarianRating implements Serializable {
     @ManyToOne
     @JoinColumn(name = "pet_owner_id")
     private PetOwner petOwner;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public Integer getRating() {
         return rating;
@@ -78,30 +66,9 @@ public class VeterinarianRating implements Serializable {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        VeterinarianRating veterinarianRating = (VeterinarianRating) o;
-        if(veterinarianRating.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, veterinarianRating.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
-
-    @Override
     public String toString() {
         return "VeterinarianRating{" +
-            "id=" + id +
-            ", rating='" + rating + "'" +
+            "rating='" + rating + "'" +
             '}';
     }
 }

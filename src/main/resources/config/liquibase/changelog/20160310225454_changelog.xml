@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+   <changeSet author="nattyadmin (generated)" id="1457650512205-1">
+      <createTable tableName="hibernate_sequences">
+         <column name="sequence_name" type="VARCHAR(255)"/>
+         <column name="sequence_next_hi_value" type="INT"/>
+      </createTable>
+   </changeSet>
+   <changeSet author="nattyadmin (generated)" id="1457650512205-2">
+      <addColumn tableName="administrator">
+         <column name="address" type="varchar(255)">
+            <constraints nullable="false"/>
+         </column>
+      </addColumn>
+   </changeSet>
+   <changeSet author="nattyadmin (generated)" id="1457650512205-3">
+      <addColumn tableName="pet_company">
+         <column name="address" type="varchar(255)">
+            <constraints nullable="false"/>
+         </column>
+      </addColumn>
+   </changeSet>
+   <changeSet author="nattyadmin (generated)" id="1457650512205-4">
+      <addColumn tableName="pet_owner">
+         <column name="address" type="varchar(255)">
+            <constraints nullable="false"/>
+         </column>
+      </addColumn>
+   </changeSet>
+   <changeSet author="nattyadmin (generated)" id="1457650512205-5">
+      <addColumn tableName="veterinarian">
+         <column name="address" type="varchar(255)">
+            <constraints nullable="false"/>
+         </column>
+      </addColumn>
+   </changeSet>
+   <changeSet author="nattyadmin (generated)" id="1457650512205-6">
+      <addColumn tableName="message">
+         <column name="folder_id" type="bigint"/>
+      </addColumn>
+   </changeSet>
+   <changeSet author="nattyadmin (generated)" id="1457650512205-7">
+      <addColumn tableName="administrator">
+         <column name="phone" type="varchar(255)">
+            <constraints nullable="false"/>
+         </column>
+      </addColumn>
+   </changeSet>
+   <changeSet author="nattyadmin (generated)" id="1457650512205-8">
+      <addColumn tableName="pet_company">
+         <column name="phone" type="varchar(255)">
+            <constraints nullable="false"/>
+         </column>
+      </addColumn>
+   </changeSet>
+   <changeSet author="nattyadmin (generated)" id="1457650512205-9">
+      <addColumn tableName="pet_owner">
+         <column name="phone" type="varchar(255)">
+            <constraints nullable="false"/>
+         </column>
+      </addColumn>
+   </changeSet>
+   <changeSet author="nattyadmin (generated)" id="1457650512205-10">
+      <addColumn tableName="veterinarian">
+         <column name="phone" type="varchar(255)">
+            <constraints nullable="false"/>
+         </column>
+      </addColumn>
+   </changeSet>
+   <changeSet author="nattyadmin (generated)" id="1457650512205-11">
+      <addColumn tableName="announcement">
+         <column name="url" type="varchar(255)">
+            <constraints nullable="false"/>
+         </column>
+      </addColumn>
+   </changeSet>
+   <changeSet author="nattyadmin (generated)" id="1457650512205-12">
+      <addColumn tableName="administrator">
+         <column name="user_id" type="bigint">
+            <constraints nullable="false"/>
+         </column>
+      </addColumn>
+   </changeSet>
+   <changeSet author="nattyadmin (generated)" id="1457650512205-13">
+      <addColumn tableName="pet_company">
+         <column name="user_id" type="bigint">
+            <constraints nullable="false"/>
+         </column>
+      </addColumn>
+   </changeSet>
+   <changeSet author="nattyadmin (generated)" id="1457650512205-14">
+      <addColumn tableName="pet_owner">
+         <column name="user_id" type="bigint">
+            <constraints nullable="false"/>
+         </column>
+      </addColumn>
+   </changeSet>
+   <changeSet author="nattyadmin (generated)" id="1457650512205-15">
+      <addColumn tableName="veterinarian">
+         <column name="user_id" type="bigint">
+            <constraints nullable="false"/>
+         </column>
+      </addColumn>
+   </changeSet>
+   <changeSet author="nattyadmin (generated)" id="1457650512205-16">
+      <addUniqueConstraint columnNames="user_id" tableName="administrator"/>
+   </changeSet>
+   <changeSet author="nattyadmin (generated)" id="1457650512205-17">
+      <addUniqueConstraint columnNames="reference_code" tableName="contract"/>
+   </changeSet>
+   <changeSet author="nattyadmin (generated)" id="1457650512205-18">
+      <addUniqueConstraint columnNames="nif" tableName="pet_company"/>
+   </changeSet>
+   <changeSet author="nattyadmin (generated)" id="1457650512205-19">
+      <addUniqueConstraint columnNames="user_id" tableName="pet_company"/>
+   </changeSet>
+   <changeSet author="nattyadmin (generated)" id="1457650512205-20">
+      <addUniqueConstraint columnNames="user_id" tableName="pet_owner"/>
+   </changeSet>
+   <changeSet author="nattyadmin (generated)" id="1457650512205-21">
+      <addUniqueConstraint columnNames="referee_number" tableName="veterinarian"/>
+   </changeSet>
+   <changeSet author="nattyadmin (generated)" id="1457650512205-22">
+      <addUniqueConstraint columnNames="user_id" tableName="veterinarian"/>
+   </changeSet>
+   <changeSet author="nattyadmin (generated)" id="1457650512205-23">
+      <addForeignKeyConstraint baseColumnNames="user_id"
+                               baseTableName="pet_company"
+                               constraintName="FK_31r6mw5myoy666jh8bprlodqs"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="jhi_user"/>
+   </changeSet>
+   <changeSet author="nattyadmin (generated)" id="1457650512205-24">
+      <addForeignKeyConstraint baseColumnNames="folder_id"
+                               baseTableName="message"
+                               constraintName="FK_cnbmxcgr3k16cnbly6d863c6e"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="folder"/>
+   </changeSet>
+   <changeSet author="nattyadmin (generated)" id="1457650512205-25">
+      <addForeignKeyConstraint baseColumnNames="user_id"
+                               baseTableName="administrator"
+                               constraintName="FK_jf8hwde5kvshk44s9pllcqid9"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="jhi_user"/>
+   </changeSet>
+   <changeSet author="nattyadmin (generated)" id="1457650512205-26">
+      <addForeignKeyConstraint baseColumnNames="user_id"
+                               baseTableName="pet_owner"
+                               constraintName="FK_lgkm8d71s0hj8fpv4ksrlbba8"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="jhi_user"/>
+   </changeSet>
+   <changeSet author="nattyadmin (generated)" id="1457650512205-27">
+      <addForeignKeyConstraint baseColumnNames="user_id"
+                               baseTableName="veterinarian"
+                               constraintName="FK_rsgr5ycpburuvgc38cmjia8hi"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="jhi_user"/>
+   </changeSet>
+   <changeSet author="nattyadmin (generated)" id="1457650512205-28">
+      <dropForeignKeyConstraint baseTableName="actor" constraintName="fk_actor_user_id"/>
+   </changeSet>
+   <changeSet author="nattyadmin (generated)" id="1457650512205-29">
+      <dropForeignKeyConstraint baseTableName="folder" constraintName="fk_folder_customer_id"/>
+   </changeSet>
+   <changeSet author="nattyadmin (generated)" id="1457650512205-30">
+      <dropForeignKeyConstraint baseTableName="message" constraintName="fk_message_recipient_id"/>
+   </changeSet>
+   <changeSet author="nattyadmin (generated)" id="1457650512205-31">
+      <dropForeignKeyConstraint baseTableName="message" constraintName="fk_message_sender_id"/>
+   </changeSet>
+   <changeSet author="nattyadmin (generated)" id="1457650512205-32">
+      <dropForeignKeyConstraint baseTableName="payment" constraintName="fk_payment_actor_id"/>
+   </changeSet>
+   <changeSet author="nattyadmin (generated)" id="1457650512205-33">
+      <dropForeignKeyConstraint baseTableName="premium_subscription"
+                                constraintName="fk_premiumsubscription_customer_id"/>
+   </changeSet>
+   <changeSet author="nattyadmin (generated)" id="1457650512205-34">
+      <dropUniqueConstraint constraintName="user_id" tableName="actor"/>
+   </changeSet>
+   <changeSet author="nattyadmin (generated)" id="1457650512205-35">
+      <dropUniqueConstraint constraintName="user_id" tableName="jhi_social_user_connection"/>
+   </changeSet>
+   <changeSet author="nattyadmin (generated)" id="1457650512205-36">
+      <dropUniqueConstraint constraintName="user_id_2" tableName="jhi_social_user_connection"/>
+   </changeSet>
+   <changeSet author="nattyadmin (generated)" id="1457650512205-37">
+      <dropTable tableName="actor"/>
+   </changeSet>
+   <changeSet author="nattyadmin (generated)" id="1457650512205-38">
+      <dropTable tableName="customer"/>
+   </changeSet>
+   <changeSet author="nattyadmin (generated)" id="1457650512205-39">
+      <addNotNullConstraint columnDataType="varchar(255)"
+                            columnName="address"
+                            tableName="clinic"/>
+   </changeSet>
+   <changeSet author="nattyadmin (generated)" id="1457650512205-40">
+      <addNotNullConstraint columnDataType="varchar(255)"
+                            columnName="bank_account"
+                            tableName="veterinarian"/>
+   </changeSet>
+   <changeSet author="nattyadmin (generated)" id="1457650512205-41">
+      <addNotNullConstraint columnDataType="varchar(255)" columnName="city" tableName="clinic"/>
+   </changeSet>
+   <changeSet author="nattyadmin (generated)" id="1457650512205-42">
+      <dropNotNullConstraint columnDataType="varchar(255)"
+                             columnName="comment"
+                             tableName="payment"/>
+   </changeSet>
+   <changeSet author="nattyadmin (generated)" id="1457650512205-43">
+      <addNotNullConstraint columnDataType="datetime"
+                            columnName="creation_date"
+                            tableName="message"/>
+   </changeSet>
+   <changeSet author="nattyadmin (generated)" id="1457650512205-44">
+      <addNotNullConstraint columnDataType="datetime"
+                            columnName="creation_date"
+                            tableName="veterinarian_comment"/>
+   </changeSet>
+   <changeSet author="nattyadmin (generated)" id="1457650512205-45">
+      <dropNotNullConstraint columnDataType="varchar(255)"
+                             columnName="description"
+                             tableName="medals"/>
+   </changeSet>
+   <changeSet author="nattyadmin (generated)" id="1457650512205-46">
+      <addNotNullConstraint columnDataType="datetime"
+                            columnName="end_date"
+                            tableName="premium_subscription"/>
+   </changeSet>
+   <changeSet author="nattyadmin (generated)" id="1457650512205-47">
+      <addNotNullConstraint columnDataType="double precision"
+                            columnName="fee"
+                            tableName="premium_subscription"/>
+   </changeSet>
+   <changeSet author="nattyadmin (generated)" id="1457650512205-48">
+      <dropNotNullConstraint columnDataType="datetime"
+                             columnName="modification_date"
+                             tableName="adoption"/>
+   </changeSet>
+   <changeSet author="nattyadmin (generated)" id="1457650512205-49">
+      <addNotNullConstraint columnDataType="varchar(255)" columnName="name" tableName="folder"/>
+   </changeSet>
+   <changeSet author="nattyadmin (generated)" id="1457650512205-50">
+      <dropNotNullConstraint columnDataType="varchar(255)"
+                             columnName="photo_content_type"
+                             tableName="announcement"/>
+   </changeSet>
+   <changeSet author="nattyadmin (generated)" id="1457650512205-51">
+      <dropNotNullConstraint columnDataType="varchar(255)"
+                             columnName="photo_content_type"
+                             tableName="pet"/>
+   </changeSet>
+   <changeSet author="nattyadmin (generated)" id="1457650512205-52">
+      <addNotNullConstraint columnDataType="varchar(255)"
+                            columnName="province"
+                            tableName="clinic"/>
+   </changeSet>
+   <changeSet author="nattyadmin (generated)" id="1457650512205-53">
+      <addNotNullConstraint columnDataType="int"
+                            columnName="rating"
+                            tableName="veterinarian_rating"/>
+   </changeSet>
+   <changeSet author="nattyadmin (generated)" id="1457650512205-54">
+      <addNotNullConstraint columnDataType="varchar(255)"
+                            columnName="referee_number"
+                            tableName="veterinarian"/>
+   </changeSet>
+   <changeSet author="nattyadmin (generated)" id="1457650512205-55">
+      <addNotNullConstraint columnDataType="varchar(255)"
+                            columnName="schedule"
+                            tableName="clinic"/>
+   </changeSet>
+   <changeSet author="nattyadmin (generated)" id="1457650512205-56">
+      <addNotNullConstraint columnDataType="datetime"
+                            columnName="start_date"
+                            tableName="premium_subscription"/>
+   </changeSet>
+   <changeSet author="nattyadmin (generated)" id="1457650512205-57">
+      <addNotNullConstraint columnDataType="varchar(255)"
+                            columnName="subject"
+                            tableName="message"/>
+   </changeSet>
+   <changeSet author="nattyadmin (generated)" id="1457650512205-58">
+      <addNotNullConstraint columnDataType="varchar(255)"
+                            columnName="terms"
+                            tableName="contract"/>
+   </changeSet>
+   <changeSet author="nattyadmin (generated)" id="1457650512205-59">
+      <addNotNullConstraint columnDataType="varchar(255)" columnName="text" tableName="message"/>
+   </changeSet>
+   <changeSet author="nattyadmin (generated)" id="1457650512205-60">
+      <addNotNullConstraint columnDataType="varchar(255)"
+                            columnName="text"
+                            tableName="veterinarian_comment"/>
+   </changeSet>
+</databaseChangeLog>

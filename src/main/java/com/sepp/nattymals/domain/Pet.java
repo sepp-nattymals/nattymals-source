@@ -33,11 +33,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  */
 @Entity
 @Table(name = "pet")
-public class Pet implements Serializable {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+public class Pet extends DomainEntity implements Serializable {
 
     @NotBlank
     @SafeHtml(whitelistType=WhiteListType.NONE)
@@ -102,14 +98,6 @@ public class Pet implements Serializable {
     @OneToMany(mappedBy = "pet")
     @JsonIgnore
     private Set<PetRating> petRatings = new HashSet<>();
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getType() {
         return type;
@@ -224,30 +212,9 @@ public class Pet implements Serializable {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Pet pet = (Pet) o;
-        if(pet.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, pet.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
-
-    @Override
     public String toString() {
         return "Pet{" +
-            "id=" + id +
-            ", type='" + type + "'" +
+            "type='" + type + "'" +
             ", sex='" + sex + "'" +
             ", weight='" + weight + "'" +
             ", hasPedigree='" + hasPedigree + "'" +

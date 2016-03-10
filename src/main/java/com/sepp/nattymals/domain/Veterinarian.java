@@ -28,10 +28,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name = "veterinarian",uniqueConstraints=@UniqueConstraint(columnNames="referee_number"))
 public class Veterinarian extends Customer implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
     @NotBlank
     @SafeHtml(whitelistType=WhiteListType.NONE)
     @Column(name = "bank_account", nullable=false)
@@ -58,14 +54,6 @@ public class Veterinarian extends Customer implements Serializable {
     @OneToMany(mappedBy = "veterinarian")
     @JsonIgnore
     private Set<VeterinarianComment> veterinarianComments = new HashSet<>();
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getBankAccount() {
         return bankAccount;
@@ -116,30 +104,9 @@ public class Veterinarian extends Customer implements Serializable {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Veterinarian veterinarian = (Veterinarian) o;
-        if(veterinarian.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, veterinarian.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
-
-    @Override
     public String toString() {
         return "Veterinarian{" +
-            "id=" + id +
-            ", bankAccount='" + bankAccount + "'" +
+            "bankAccount='" + bankAccount + "'" +
             ", webAddress='" + webAddress + "'" +
             ", refereeNumber='" + refereeNumber + "'" +
             '}';

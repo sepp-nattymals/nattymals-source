@@ -26,11 +26,7 @@ import org.springframework.format.annotation.DateTimeFormat;
  */
 @Entity
 @Table(name = "message")
-public class Message implements Serializable {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+public class Message extends DomainEntity implements Serializable {
 
     @NotBlank
     @SafeHtml(whitelistType=WhiteListType.NONE)
@@ -51,6 +47,12 @@ public class Message implements Serializable {
     @NotNull
     @Valid
     @ManyToOne
+    @JoinColumn(name = "folder_id")
+    private Folder folder;
+    
+    @NotNull
+    @Valid
+    @ManyToOne
     @JoinColumn(name = "sender_id")
     private Customer sender;
 
@@ -59,14 +61,6 @@ public class Message implements Serializable {
     @ManyToOne
     @JoinColumn(name = "recipient_id")
     private Customer recipient;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getText() {
         return text;
@@ -108,31 +102,18 @@ public class Message implements Serializable {
         this.recipient = customer;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Message message = (Message) o;
-        if(message.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, message.id);
-    }
+    public Folder getFolder() {
+		return folder;
+	}
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
+	public void setFolder(Folder folder) {
+		this.folder = folder;
+	}
 
-    @Override
+	@Override
     public String toString() {
         return "Message{" +
-            "id=" + id +
-            ", text='" + text + "'" +
+            "text='" + text + "'" +
             ", creationDate='" + creationDate + "'" +
             ", subject='" + subject + "'" +
             '}';

@@ -26,11 +26,7 @@ import org.springframework.format.annotation.DateTimeFormat;
  */
 @Entity
 @Table(name = "veterinarian_comment")
-public class VeterinarianComment implements Serializable {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+public class VeterinarianComment extends DomainEntity implements Serializable {
 
     @NotNull
     @DateTimeFormat(pattern="dd/MM/yyyy HH:MM")
@@ -54,14 +50,6 @@ public class VeterinarianComment implements Serializable {
     @ManyToOne
     @JoinColumn(name = "pet_owner_id")
     private PetOwner petOwner;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public ZonedDateTime getCreationDate() {
         return creationDate;
@@ -96,30 +84,9 @@ public class VeterinarianComment implements Serializable {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        VeterinarianComment veterinarianComment = (VeterinarianComment) o;
-        if(veterinarianComment.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, veterinarianComment.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
-
-    @Override
     public String toString() {
         return "VeterinarianComment{" +
-            "id=" + id +
-            ", creationDate='" + creationDate + "'" +
+            "creationDate='" + creationDate + "'" +
             ", text='" + text + "'" +
             '}';
     }

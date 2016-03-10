@@ -5,9 +5,16 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
@@ -20,11 +27,12 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 /**
  * A Actor.
  */
-@MappedSuperclass
-public abstract class Actor implements Serializable {
+@Entity
+@Table(name = "actor")
+public abstract class Actor extends DomainEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-
+	
 	@NotBlank
 	@SafeHtml(whitelistType=WhiteListType.NONE)
     @Column(name = "address", nullable = false)
@@ -44,7 +52,7 @@ public abstract class Actor implements Serializable {
     @OneToOne(optional=false)
     private User user;
 
-    public String getAddress() {
+	public String getAddress() {
         return address;
     }
     

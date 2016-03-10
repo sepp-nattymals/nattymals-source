@@ -25,11 +25,7 @@ import org.hibernate.validator.constraints.SafeHtml.WhiteListType;
  */
 @Entity
 @Table(name = "historical_points")
-public class HistoricalPoints implements Serializable {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+public class HistoricalPoints extends DomainEntity implements Serializable {
 
     @NotBlank
     @SafeHtml(whitelistType=WhiteListType.NONE)
@@ -46,14 +42,6 @@ public class HistoricalPoints implements Serializable {
     @ManyToOne
     @JoinColumn(name = "pet_owner_id")
     private PetOwner petOwner;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getDescription() {
         return description;
@@ -80,30 +68,9 @@ public class HistoricalPoints implements Serializable {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        HistoricalPoints historicalPoints = (HistoricalPoints) o;
-        if(historicalPoints.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, historicalPoints.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
-
-    @Override
     public String toString() {
         return "HistoricalPoints{" +
-            "id=" + id +
-            ", description='" + description + "'" +
+            "description='" + description + "'" +
             ", operationPoints='" + operationPoints + "'" +
             '}';
     }

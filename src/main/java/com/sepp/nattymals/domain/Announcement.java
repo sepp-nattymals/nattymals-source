@@ -27,11 +27,7 @@ import org.springframework.format.annotation.DateTimeFormat;
  */
 @Entity
 @Table(name = "announcement")
-public class Announcement implements Serializable {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+public class Announcement extends DomainEntity implements Serializable {
 
     @NotBlank
     @SafeHtml(whitelistType=WhiteListType.NONE)
@@ -71,14 +67,6 @@ public class Announcement implements Serializable {
     @ManyToOne
     @JoinColumn(name = "administrator_id")
     private Administrator administrator;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getTitle() {
         return title;
@@ -145,30 +133,9 @@ public class Announcement implements Serializable {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Announcement announcement = (Announcement) o;
-        if(announcement.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, announcement.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
-
-    @Override
     public String toString() {
         return "Announcement{" +
-            "id=" + id +
-            ", title='" + title + "'" +
+            "title='" + title + "'" +
             ", companyName='" + companyName + "'" +
             ", startDate='" + startDate + "'" +
             ", endDate='" + endDate + "'" +

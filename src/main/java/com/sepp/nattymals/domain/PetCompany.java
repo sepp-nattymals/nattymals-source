@@ -27,10 +27,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name = "pet_company", uniqueConstraints=@UniqueConstraint(columnNames="nif"))
 public class PetCompany extends Actor implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
     @NotBlank
     @SafeHtml(whitelistType=WhiteListType.NONE)
     @Column(name = "bank_account", nullable = false)
@@ -44,14 +40,6 @@ public class PetCompany extends Actor implements Serializable {
     @OneToMany(mappedBy = "petCompany")
     @JsonIgnore
     private Set<Contract> contracts = new HashSet<>();
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getBankAccount() {
         return bankAccount;
@@ -78,30 +66,9 @@ public class PetCompany extends Actor implements Serializable {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        PetCompany petCompany = (PetCompany) o;
-        if(petCompany.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, petCompany.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
-
-    @Override
     public String toString() {
         return "PetCompany{" +
-            "id=" + id +
-            ", bankAccount='" + bankAccount + "'" +
+            "bankAccount='" + bankAccount + "'" +
             ", nif='" + nif + "'" +
             '}';
     }

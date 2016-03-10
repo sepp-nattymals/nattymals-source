@@ -16,10 +16,6 @@ import java.util.Objects;
 @Table(name = "pet_owner")
 public class PetOwner extends Customer implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
     @NotNull
     @Min(value = 0)
     @Column(name = "total_points", nullable = false)
@@ -56,14 +52,6 @@ public class PetOwner extends Customer implements Serializable {
     @OneToMany(mappedBy = "petOwner")
     @JsonIgnore
     private Set<VeterinarianRating> veterinarianRatings = new HashSet<>();
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public Integer getTotalPoints() {
         return totalPoints;
@@ -138,30 +126,9 @@ public class PetOwner extends Customer implements Serializable {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        PetOwner petOwner = (PetOwner) o;
-        if(petOwner.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, petOwner.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
-
-    @Override
     public String toString() {
         return "PetOwner{" +
-            "id=" + id +
-            ", totalPoints='" + totalPoints + "'" +
+            "totalPoints='" + totalPoints + "'" +
             ", isBlocked='" + isBlocked + "'" +
             '}';
     }

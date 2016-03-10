@@ -27,11 +27,7 @@ import org.springframework.format.annotation.DateTimeFormat;
  */
 @Entity
 @Table(name = "payment")
-public class Payment implements Serializable {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+public class Payment extends DomainEntity implements Serializable {
 
     @NotBlank
     @SafeHtml(whitelistType=WhiteListType.NONE)
@@ -58,14 +54,6 @@ public class Payment implements Serializable {
     @ManyToOne
     @JoinColumn(name = "actor_id")
     private Actor actor;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getConcept() {
         return concept;
@@ -108,30 +96,9 @@ public class Payment implements Serializable {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Payment payment = (Payment) o;
-        if(payment.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, payment.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
-
-    @Override
     public String toString() {
         return "Payment{" +
-            "id=" + id +
-            ", concept='" + concept + "'" +
+            "concept='" + concept + "'" +
             ", amount='" + amount + "'" +
             ", paymentDate='" + paymentDate + "'" +
             ", comment='" + comment + "'" +

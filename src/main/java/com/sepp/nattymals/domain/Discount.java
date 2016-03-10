@@ -26,11 +26,7 @@ import org.springframework.format.annotation.DateTimeFormat;
  */
 @Entity
 @Table(name = "discount")
-public class Discount implements Serializable {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+public class Discount extends DomainEntity implements Serializable {
 
     @NotBlank
     @SafeHtml(whitelistType=WhiteListType.NONE)
@@ -71,14 +67,6 @@ public class Discount implements Serializable {
     @ManyToOne
     @JoinColumn(name = "administrator_id")
     private Administrator administrator;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getCompanyName() {
         return companyName;
@@ -145,30 +133,9 @@ public class Discount implements Serializable {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Discount discount = (Discount) o;
-        if(discount.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, discount.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
-
-    @Override
     public String toString() {
         return "Discount{" +
-            "id=" + id +
-            ", companyName='" + companyName + "'" +
+            "companyName='" + companyName + "'" +
             ", title='" + title + "'" +
             ", description='" + description + "'" +
             ", code='" + code + "'" +

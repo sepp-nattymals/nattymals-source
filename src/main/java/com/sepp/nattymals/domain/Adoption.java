@@ -26,11 +26,7 @@ import org.springframework.format.annotation.DateTimeFormat;
  */
 @Entity
 @Table(name = "adoption")
-public class Adoption implements Serializable {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+public class Adoption extends DomainEntity implements Serializable {
 
     @NotBlank
     @SafeHtml(whitelistType=WhiteListType.NONE)
@@ -56,14 +52,6 @@ public class Adoption implements Serializable {
     @ManyToOne
     @JoinColumn(name = "pet_id")
     private Pet pet;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getInformativeText() {
         return informativeText;
@@ -106,30 +94,9 @@ public class Adoption implements Serializable {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Adoption adoption = (Adoption) o;
-        if(adoption.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, adoption.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
-
-    @Override
     public String toString() {
         return "Adoption{" +
-            "id=" + id +
-            ", informativeText='" + informativeText + "'" +
+            "informativeText='" + informativeText + "'" +
             ", creationDate='" + creationDate + "'" +
             ", modificationDate='" + modificationDate + "'" +
             ", isRemoved='" + isRemoved + "'" +

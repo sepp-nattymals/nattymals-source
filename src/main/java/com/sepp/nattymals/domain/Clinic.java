@@ -24,11 +24,7 @@ import org.hibernate.validator.constraints.SafeHtml.WhiteListType;
  */
 @Entity
 @Table(name = "clinic")
-public class Clinic implements Serializable {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+public class Clinic extends DomainEntity implements Serializable {
 
     @NotBlank
     @SafeHtml(whitelistType=WhiteListType.NONE)
@@ -59,14 +55,6 @@ public class Clinic implements Serializable {
     @ManyToOne
     @JoinColumn(name = "veterinarian_id")
     private Veterinarian veterinarian;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getAddress() {
         return address;
@@ -117,30 +105,9 @@ public class Clinic implements Serializable {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Clinic clinic = (Clinic) o;
-        if(clinic.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, clinic.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
-
-    @Override
     public String toString() {
         return "Clinic{" +
-            "id=" + id +
-            ", address='" + address + "'" +
+            "address='" + address + "'" +
             ", city='" + city + "'" +
             ", province='" + province + "'" +
             ", schedule='" + schedule + "'" +

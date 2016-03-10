@@ -23,11 +23,7 @@ import org.springframework.format.annotation.DateTimeFormat;
  */
 @Entity
 @Table(name = "premium_subscription")
-public class PremiumSubscription implements Serializable {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+public class PremiumSubscription extends DomainEntity implements Serializable {
 
     @NotNull
     @DateTimeFormat(pattern="dd/MM/yyyy HH:MM")
@@ -49,14 +45,6 @@ public class PremiumSubscription implements Serializable {
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private Customer customer;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public ZonedDateTime getStartDate() {
         return startDate;
@@ -91,30 +79,9 @@ public class PremiumSubscription implements Serializable {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        PremiumSubscription premiumSubscription = (PremiumSubscription) o;
-        if(premiumSubscription.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, premiumSubscription.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
-
-    @Override
     public String toString() {
         return "PremiumSubscription{" +
-            "id=" + id +
-            ", startDate='" + startDate + "'" +
+            "startDate='" + startDate + "'" +
             ", endDate='" + endDate + "'" +
             ", fee='" + fee + "'" +
             '}';

@@ -26,11 +26,7 @@ import org.hibernate.validator.constraints.SafeHtml.WhiteListType;
  */
 @Entity
 @Table(name = "medals")
-public class Medals implements Serializable {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+public class Medals extends DomainEntity implements Serializable {
 
     @NotBlank
     @SafeHtml(whitelistType=WhiteListType.NONE)
@@ -65,14 +61,6 @@ public class Medals implements Serializable {
     @ManyToOne
     @JoinColumn(name = "pet_owner_id")
     private PetOwner petOwner;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -131,30 +119,9 @@ public class Medals implements Serializable {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Medals medals = (Medals) o;
-        if(medals.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, medals.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
-
-    @Override
     public String toString() {
         return "Medals{" +
-            "id=" + id +
-            ", name='" + name + "'" +
+            "name='" + name + "'" +
             ", code='" + code + "'" +
             ", description='" + description + "'" +
             ", points='" + points + "'" +

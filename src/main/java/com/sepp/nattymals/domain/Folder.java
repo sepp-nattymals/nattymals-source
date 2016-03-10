@@ -29,11 +29,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  */
 @Entity
 @Table(name = "folder")
-public class Folder implements Serializable {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+public class Folder extends DomainEntity implements Serializable {
 
     @NotBlank
     @SafeHtml(whitelistType=WhiteListType.NONE)
@@ -50,14 +46,6 @@ public class Folder implements Serializable {
     @OneToMany(mappedBy = "folder")
     @JsonIgnore
     private Set<Message> messages = new HashSet<>();
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -84,30 +72,9 @@ public class Folder implements Serializable {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Folder folder = (Folder) o;
-        if(folder.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, folder.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
-
-    @Override
     public String toString() {
         return "Folder{" +
-            "id=" + id +
-            ", name='" + name + "'" +
+            "name='" + name + "'" +
             '}';
     }
 }
