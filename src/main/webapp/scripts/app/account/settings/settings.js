@@ -7,7 +7,7 @@ angular.module('nattymalsApp')
                 parent: 'account',
                 url: '/settings',
                 data: {
-                    authorities: ['ROLE_USER'],
+                    authorities: ['ROLE_PETOWNER'],
                     pageTitle: 'global.menu.account.settings'
                 },
                 views: {

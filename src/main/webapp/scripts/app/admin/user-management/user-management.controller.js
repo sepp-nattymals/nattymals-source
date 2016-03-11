@@ -3,7 +3,7 @@
 angular.module('nattymalsApp')
     .controller('UserManagementController', function ($scope, Principal, User, ParseLinks, Language) {
         $scope.users = [];
-        $scope.authorities = ["ROLE_USER", "ROLE_ADMIN"];
+        $scope.authorities = ["ROLE_PETOWNER", "ROLE_ADMINISTRATOR", "ROLE_PETCOMPANY", "ROLE_VETERINARIAN"];
         Language.getAll().then(function (languages) {
             $scope.languages = languages;
         });

@@ -2,4 +2,6 @@ id;login;password_hash;first_name;last_name;email;activated;lang_key;created_by
 1;system;$2a$10$mE.qmcV0mFU5NcKh73TZx.z4ueI/.bDWbj0T1BYyqP481kGGarKLG;System;System;system@localhost;true;en;system
 2;anonymousUser;$2a$10$j8S5d7Sr7.8VTOYNviDPOeWX8KcYILUVJBsYV83Y5NtECayypx9lO;Anonymous;User;anonymous@localhost;true;en;system
 3;admin;$2a$10$gSAhZrxMllrbgj/kkK9UceBPpChGWJA7SYIb1Mqo.n5aNLq1/oRrC;Administrator;Administrator;admin@localhost;true;en;system
-4;user;$2a$10$VEjxo0jq2YG9Rbk2HmX9S.k1uZBGYUHdUcid3g/vfiEl7lwWgOH/K;User;User;user@localhost;true;en;system
+4;petowner;$2a$10$7z/OkJ4D1TC26nZO0eAYOO5cg5yDW1pygKhLS.27yqcaFL6b.JhLm;Pet;Owner;petowner@nattymals.com;true;es;system
+5;petcompany;$2a$10$oSsvUyV2iJ5V9lyFTUWZyed29FRQqOaMIoj4sYOOgw56ZEEafFNXG;Pet;Company;petcompany@nattymals.com;true;es;system
+6;veterinarian;$2a$10$ebs/VYylGbj2FR2sNjcTDe/4Odcvb3FZcVdbK/Wxx8XGEdS.DVa0O;Veterinarian;Clinic;veterinarian@nattymals.com;true;es;system

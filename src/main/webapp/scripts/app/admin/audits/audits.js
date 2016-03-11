@@ -7,7 +7,7 @@ angular.module('nattymalsApp')
                 parent: 'admin',
                 url: '/audits',
                 data: {
-                    authorities: ['ROLE_ADMIN'],
+                    authorities: ['ROLE_ADMINISTRATOR'],
                     pageTitle: 'audits.title'
                 },
                 views: {
