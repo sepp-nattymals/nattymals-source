@@ -7,7 +7,7 @@ angular.module('nattymalsApp')
                 parent: 'entity',
                 url: '/medalss',
                 data: {
-                    authorities: ['ROLE_PETOWNER'],
+                    authorities: ['ROLE_ADMINISTRATOR'],
                     pageTitle: 'nattymalsApp.medals.home.title'
                 },
                 views: {
@@ -28,7 +28,7 @@ angular.module('nattymalsApp')
                 parent: 'entity',
                 url: '/medals/{id}',
                 data: {
-                    authorities: ['ROLE_PETOWNER'],
+                    authorities: ['ROLE_ADMINISTRATOR'],
                     pageTitle: 'nattymalsApp.medals.detail.title'
                 },
                 views: {
@@ -51,7 +51,7 @@ angular.module('nattymalsApp')
                 parent: 'medals',
                 url: '/new',
                 data: {
-                    authorities: ['ROLE_PETOWNER'],
+                    authorities: ['ROLE_ADMINISTRATOR'],
                 },
                 onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                     $uibModal.open({
@@ -82,7 +82,7 @@ angular.module('nattymalsApp')
                 parent: 'medals',
                 url: '/{id}/edit',
                 data: {
-                    authorities: ['ROLE_PETOWNER'],
+                    authorities: ['ROLE_ADMINISTRATOR'],
                 },
                 onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                     $uibModal.open({
@@ -105,7 +105,7 @@ angular.module('nattymalsApp')
                 parent: 'medals',
                 url: '/{id}/delete',
                 data: {
-                    authorities: ['ROLE_PETOWNER'],
+                    authorities: ['ROLE_ADMINISTRATOR'],
                 },
                 onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                     $uibModal.open({
