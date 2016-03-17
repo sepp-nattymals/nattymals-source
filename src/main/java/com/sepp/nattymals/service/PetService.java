@@ -45,6 +45,17 @@ public class PetService {
         Page<Pet> result = petRepository.findAll(pageable); 
         return result;
     }
+    
+    /**
+     *  get all the pets filtered by type.
+     *  @return the list of entities
+     */
+//    @Transactional(readOnly = true) 
+//    public Page<Pet> findAllByType(Pageable pageable) {
+//        log.debug("Request to get all Pets filtered by type");
+//        Page<Pet> result = petRepository.findAllByType(pageable); 
+//        return result;
+//    }
 
     /**
      *  get one pet by id.
