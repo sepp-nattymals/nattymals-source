@@ -17,6 +17,16 @@
                         <span class="hidden-sm" translate="global.menu.home">Home</span>
                     </a>
                 </li>
+                <li ui-sref-active="active">
+                    <a ui-sref="pet" data-toggle="collapse" data-target=".navbar-collapse.in">
+                        <span class="glyphicon glyphicon-th-list"></span>
+                        <span class="hidden-sm" translate="global.menu.pet">Pets</span>
+                    </a>
+<!--                     <ul class="dropdown-menu"> -->
+<!--                     	<li ui-sref-active="active" ><a ui-sref="pet" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-search"></span> -->
+<!--                         &#xA0;<span translate="global.menu.entities.pet">Pet</span></a></li> -->
+<!--                     </ul> -->
+                </li>
                 <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
                 <li ui-sref-active="active" ng-switch-when="true" class="dropdown pointer">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="">

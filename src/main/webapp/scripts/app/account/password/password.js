@@ -7,7 +7,7 @@ angular.module('nattymalsApp')
                 parent: 'account',
                 url: '/password',
                 data: {
-                    authorities: ['ROLE_PETOWNER'],
+                    authorities: ['ROLE_PETOWNER', 'ROLE_ADMINISTRATOR', 'ROLE_VETERINARIAN', 'ROLE_PETCOMPANY'],
                     pageTitle: 'global.menu.account.password'
                 },
                 views: {
