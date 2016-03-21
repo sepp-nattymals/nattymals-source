@@ -24,6 +24,27 @@ angular.module('nattymalsApp')
                     }]
                 }
             })
+            .state('discount.company', {
+                parent: 'entity',
+                url: '/discounts/{companyName}',
+                data: {
+                    authorities: ['ROLE_ADMINISTRATOR'],
+                    pageTitle: 'nattymalsApp.discount.home.title'
+                },
+                views: {
+                    'content@': {
+                        templateUrl: 'scripts/app/entities/discount/discounts.html',
+                        controller: 'DiscountCompanyController'
+                    }
+                },
+                resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('discount');
+                        $translatePartialLoader.addPart('global');
+                        return $translate.refresh();
+                    }]
+                }
+            })
             .state('discount.detail', {
                 parent: 'entity',
                 url: '/discount/{id}',

@@ -53,12 +53,12 @@ public class Discount extends DomainEntity implements Serializable {
     private Integer discountRate;
     
     @NotNull
-    @DateTimeFormat(pattern="dd/MM/yyyy HH:MM")
+    @DateTimeFormat(pattern="dd/MM/yyyy HH:mm")
     @Column(name = "start_date", nullable = false)
     private ZonedDateTime startDate;
     
     @NotNull
-    @DateTimeFormat(pattern="dd/MM/yyyy HH:MM")
+    @DateTimeFormat(pattern="dd/MM/yyyy HH:mm")
     @Column(name = "end_date", nullable = false)
     private ZonedDateTime endDate;
     

@@ -34,10 +34,10 @@ public abstract class DomainEntity implements Serializable {
 	
 	 // Equality ---------------------------------------------------------------
 	
-	@Override
-	public int hashCode() {
-	        return this.getId().intValue();
-	}
+//	@Override
+//	public int hashCode() {
+//	        return this.getId().intValue();
+//	}
 	
 	@Override
 	public boolean equals(Object other) {

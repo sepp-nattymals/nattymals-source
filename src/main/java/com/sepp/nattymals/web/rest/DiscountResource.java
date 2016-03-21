@@ -80,7 +80,7 @@ public class DiscountResource {
     public ResponseEntity<List<Discount>> getAllDiscounts(Pageable pageable)
         throws URISyntaxException {
         log.debug("REST request to get a page of Discounts");
-        Page<Discount> page = discountService.findAll(pageable); 
+        Page<Discount> page = discountService.findAll(pageable);    	
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/discounts");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
@@ -113,5 +113,20 @@ public class DiscountResource {
         log.debug("REST request to delete Discount : {}", id);
         discountService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("discount", id.toString())).build();
+    }
+    
+    /**
+     * GET  /discounts/:companyName -> get all the discounts from Company Name.
+     */
+    @RequestMapping(value = "/discounts/{companyName}",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<List<Discount>> getAllDiscountsFromCompanyName(Pageable pageable, @PathVariable String companyName)
+        throws URISyntaxException {
+        log.debug("REST request to get a page of {} Discounts", companyName);
+        Page<Discount> page = discountService.findCompanyDiscountByName(companyName, pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/discounts/{companyName}");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 }

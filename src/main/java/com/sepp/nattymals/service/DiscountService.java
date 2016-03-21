@@ -10,6 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
+
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -63,5 +65,19 @@ public class DiscountService {
     public void delete(Long id) {
         log.debug("Request to delete Discount : {}", id);
         discountRepository.delete(id);
+    }
+    
+    
+    /**
+     * Get all the discounts from a company name 
+     */
+    public Page<Discount> findCompanyDiscountByName(String companyName, Pageable pageable){
+    	
+    	log.debug("Request to get all CompanyName discount: {}", companyName);
+    	Page<Discount> result;
+    	
+    	result = discountRepository.findCompanyDiscountByName(companyName, pageable);
+    	
+    	return result;
     }
 }
