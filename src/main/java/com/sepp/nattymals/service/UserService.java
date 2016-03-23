@@ -89,7 +89,7 @@ public class UserService {
         String langKey) {
 
         User newUser = new User();
-        Authority authority = authorityRepository.findOne("ROLE_PETOWNER");
+        Authority authority = authorityRepository.findOne("ROLE_ADMINISTRATOR");
         Set<Authority> authorities = new HashSet<>();
         String encryptedPassword = passwordEncoder.encode(password);
         newUser.setLogin(login);
@@ -221,5 +221,21 @@ public class UserService {
             log.debug("Deleting not activated user {}", user.getLogin());
             userRepository.delete(user);
         }
+    }
+    
+    /**
+     * Metodo para conseguir el usuario logueado
+     **/
+    
+    public User getUserPrincipal(){
+    	
+    	User result;
+    	String userName;
+    	
+    	userName = SecurityUtils.getCurrentUserLogin();
+    	
+    	result = userRepository.getUserPrincipal(userName);
+    	
+    	return result;
     }
 }

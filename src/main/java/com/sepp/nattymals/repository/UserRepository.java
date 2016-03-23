@@ -28,5 +28,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     @Override
     void delete(User t);
+    
+    @Query("select u from User u where u.login = ?1")
+    User getUserPrincipal(String userName);
 
 }

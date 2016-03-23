@@ -2,6 +2,8 @@ package com.sepp.nattymals.service;
 
 import com.sepp.nattymals.domain.Actor;
 import com.sepp.nattymals.repository.ActorRepository;
+import com.sepp.nattymals.repository.UserRepository;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -24,6 +26,9 @@ public class ActorService {
     
     @Inject
     private ActorRepository actorRepository;
+    
+    @Inject
+    private UserService userService;
     
     /**
      * Save a actor.
@@ -63,5 +68,21 @@ public class ActorService {
     public void delete(Long id) {
         log.debug("Request to delete Actor : {}", id);
         actorRepository.delete(id);
+    }
+    
+    /**
+     * Get the actor authenticated
+     * @return the actor who is authenticated
+     */
+    public Actor getPrincipal(){
+    	
+    	Actor result;
+    	Long id;
+    	
+    	id = userService.getUserPrincipal().getId();
+    	
+    	result = actorRepository.getPrincipal(id);
+    	
+    	return result;
     }
 }
