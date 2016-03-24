@@ -31,5 +31,6 @@
     <include file="classpath:config/liquibase/changelog/addPetOwnerData.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/addVeterinarianData.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/addPetCompanyData.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/addAdministratorData.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
 </databaseChangeLog>
